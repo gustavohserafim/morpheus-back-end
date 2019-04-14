@@ -10,4 +10,8 @@ class CompanyController:
 
     @staticmethod
     def create(data):
-        return jsonify(CompanyModel.create(data))
+        result = CompanyModel.create(data)
+
+        if result is False:
+            return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
+        return jsonify({'result': 'ok', 'code': 200})
