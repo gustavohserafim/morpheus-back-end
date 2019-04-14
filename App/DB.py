@@ -26,16 +26,23 @@ class DB:
 
     @staticmethod
     def insert(data, table):
-        columns = ''
-        values = ''
-        for k, v in enumerate(data):
-            columns = columns + k
-            values = values + v
+        columns = []
+        values = []
 
-        sql = 'INSERT INTO' + table + '(' + columns + ') VALUES (' + values + ')'
-        mysql = app.mysql
-        cur = mysql.connection.cursor()
-        cur.execute(sql)
-        mysql.connection.commit()
-        cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
-        return cur.fetchone()
+        for i in data:
+            columns.append(i)
+            values.append(data[i])
+
+        query_placeholders = ', '.join(['%s'] * len(values))
+        query_columns = ', '.join(columns)
+        try:
+
+            mysql = app.mysql
+            insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
+            cur = mysql.connection.cursor()
+            cur.execute(insert_query, values)
+            mysql.connection.commit()
+            return True
+        except:
+            return False
+        # cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
