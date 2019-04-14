@@ -23,4 +23,5 @@ class CompanyController:
     @staticmethod
     def remove(company_id):
         CompanyModel.remove(company_id)
+        #asdasda
         return jsonify({'result': 'ok', 'code': 200})
