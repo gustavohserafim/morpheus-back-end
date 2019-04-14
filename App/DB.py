@@ -43,6 +43,7 @@ class DB:
             cur.execute(insert_query, values)
             mysql.connection.commit()
             return True
-        except:
+        except Exception as e:
+            print(e)
             return False
         # cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
