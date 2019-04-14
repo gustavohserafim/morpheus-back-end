@@ -47,3 +47,27 @@ class DB:
             print(e)
             return False
         # cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
+
+    @staticmethod
+    def SelectById(id, columns, table):
+        names = ''
+        for i in columns:
+            names = names + i + ','
+        names = names[:-1] + ' '
+
+        mysql = app.mysql
+        cur = mysql.connection.cursor()
+        sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND WHERE removed = 0;'.format(id)
+
+        cur.execute(sql)
+        data = cur.fetchall()
+
+        result = []
+        for k, v1 in enumerate(data):
+            row = {}
+            for k, v2 in enumerate(v1):
+                row.update({columns[k]: v2})
+            result.append(row)
+
+        return result
+
