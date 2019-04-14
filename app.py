@@ -23,3 +23,6 @@ def company_create(): return CompanyController.create(request.get_json())
 @app.route('/company/<int:company_id>', methods=['GET'])
 def company_get(company_id): return CompanyController.get(company_id)
 
+
+@app.route('/company/<int:company_id>', methods=['DELETE'])
+def company_remove(company_id): return CompanyController.remove(company_id)

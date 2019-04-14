@@ -14,3 +14,7 @@ class CompanyModel:
     @staticmethod
     def get(company_id):
         return DB.SelectById(company_id, ['id', 'name', 'cnpj', 'logo', 'phone', 'address'], 'company')
+
+    @staticmethod
+    def remove(company_id):
+        return DB.remove(company_id, 'company')
