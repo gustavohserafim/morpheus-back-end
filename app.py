@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_mysqldb import MySQL
 from Controller.CompanyController import *
 
@@ -11,7 +11,10 @@ app.config['MYSQL_DB'] = 'M3SrwmVxfO'
 
 mysql = MySQL(app)
 
-
+# Routes
 @app.route('/company', methods=['GET'])
-def company_all():
-    return CompanyController.all()
+def company_all(): return CompanyController.all()
+
+
+@app.route('/company', methods=['POST'])
+def company_create(): return CompanyController.create(request.get_json())

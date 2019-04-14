@@ -38,4 +38,4 @@ class DB:
         cur.execute(sql)
         mysql.connection.commit()
         cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
-        print(cur.fetchone())
+        return cur.fetchone()

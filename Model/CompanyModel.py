@@ -7,4 +7,7 @@ class CompanyModel:
     def all():
         return DB.selectAll(['id', 'name', 'cnpj', 'logo', 'phone', 'address'], 'company')
 
-    def
+    @staticmethod
+    def create(data):
+        return DB.insert(data, 'company')
+
