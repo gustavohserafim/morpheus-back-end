@@ -9,7 +9,7 @@ class DB:
         for i in columns:
             names = names + i + ','
         names = names[:-1] + ' '
-        sql = 'SELECT ' + names + 'FROM ' + table + ';'
+        sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE removed = 0;'
         mysql = app.mysql
         cur = mysql.connection.cursor()
         cur.execute(sql)
@@ -71,3 +71,15 @@ class DB:
 
         return result
 
+    @staticmethod
+    def remove(id, table):
+        try:
+            mysql = app.mysql
+            sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
+            cur = mysql.connection.cursor()
+            cur.execute(sql)
+            mysql.connection.commit()
+            return True
+        except Exception as e:
+            print(e)
+            return False
