@@ -57,7 +57,7 @@ class DB:
 
         mysql = app.mysql
         cur = mysql.connection.cursor()
-        sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND WHERE removed = 0;'.format(id)
+        sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND removed = 0;'.format(id)
 
         cur.execute(sql)
         data = cur.fetchall()
