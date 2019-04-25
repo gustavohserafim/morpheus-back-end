@@ -26,6 +26,7 @@ mysql = MySQL(app)
 
 
 @app.route('/user', methods=['POST'])
+@jwt_required
 def adm_user_create(): return UserController.create(request.get_json())
 
 # Routes
@@ -47,9 +48,7 @@ def logout():
 
 @app.route('/api/company', methods=['GET'])
 @jwt_required
-def company_all():
-    print(get_jwt_identity())
-    return CompanyController.all()
+def company_all(): return CompanyController.all()
 
 
 @app.route('/api/company', methods=['POST'])

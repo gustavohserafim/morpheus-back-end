@@ -11,7 +11,7 @@ class AuthController:
         if login is False:
             return jsonify({'result': 'error', 'message': 'Email or password incorrect.'}), 401
 
-        resp = jsonify({'result': 'ok', 'message': 'Login ok'})
+        resp = jsonify({'result': 'ok', 'message': 'Login ok', 'data': {'token': login['access_token']} })
         set_access_cookies(resp, login['access_token'])
         set_refresh_cookies(resp, login['refresh_token'])
         return resp, 200
