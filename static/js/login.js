@@ -1,12 +1,10 @@
 function login() {
 
     var payload = {};
-
     payload.email = $('#email').val();
     payload.password = $('#password').val();
-    console.log(payload);
     var data = JSON.stringify(payload);
-    console.log(JSON.parse(data));
+
     $.ajax({
         type: "POST",
         url: "/token/auth",
@@ -24,30 +22,20 @@ function login() {
                 }
             });
 
-            $('#login_form').hide();
-            $('#logged').show();
-            getHome();
-        }
-        //error: alert("Email e/ou senha incorreto(s)!")
+            window.location = '/static/index.html';
+        },
+        error: $('#login_error').show()
     });
 
-}
-
-function getHome() {
-
-    $.ajax({
-        type: "GET",
-        url: "/api/company",
-        //dataType: "json",
-        //contentType: 'application/json',
-        success: function () {
-            $('#login_form').hide();
-            $('#logged').show();
-
-        }
-    });
 }
 
 $(document).ready(function () {
-    $('#logged').hide();
+    $('#login_error').hide();
+
+    var token = $.cookie('access_token_cookie');
+
+    if (token !== undefined) {
+        window.location = '/static/index.html';
+    }
+
 });

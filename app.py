@@ -4,10 +4,17 @@ from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
 from Controller.CompanyController import *
+<<<<<<< HEAD
 from Controller.MeasurementController import *
 from Controller.MaterialController import *
 from Controller.AuthController import *
 from Controller.Adm.UserController import *
+=======
+from Controller.AuthController import *
+from Controller.Adm.UserController import *
+from Controller.MeasurementController import *
+from Controller.MaterialController import *
+>>>>>>> develop
 
 app = Flask(__name__)
 
@@ -58,15 +65,19 @@ def company_all(): return CompanyController.all()
 def company_create(): return CompanyController.create(request.get_json())
 
 @app.route('/material', methods=['GET'])
+@jwt_required
 def material_all(): return MaterialController.all()
 
 @app.route('/material', methods=['POST'])
+@jwt_required
 def material_create(): return MaterialController.create(request.get_json())
 
 @app.route('/measurement', methods=['GET'])
+@jwt_required
 def measurement_all(): return MeasurementController.all()
 
 @app.route('/measurement', methods=['POST'])
+@jwt_required
 def measurement_create(): return MeasurementController.create(request.get_json())
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
