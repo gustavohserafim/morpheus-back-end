@@ -58,15 +58,19 @@ def company_all(): return CompanyController.all()
 def company_create(): return CompanyController.create(request.get_json())
 
 @app.route('/material', methods=['GET'])
+@jwt_required
 def material_all(): return MaterialController.all()
 
 @app.route('/material', methods=['POST'])
+@jwt_required
 def material_create(): return MaterialController.create(request.get_json())
 
 @app.route('/measurement', methods=['GET'])
+@jwt_required
 def measurement_all(): return MeasurementController.all()
 
 @app.route('/measurement', methods=['POST'])
+@jwt_required
 def measurement_create(): return MeasurementController.create(request.get_json())
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
