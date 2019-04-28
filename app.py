@@ -6,6 +6,8 @@ from flask_jwt_extended import (
 from Controller.CompanyController import *
 from Controller.AuthController import *
 from Controller.Adm.UserController import *
+from Controller.MeasurementController import *
+from Controller.MaterialController import *
 
 app = Flask(__name__)
 
@@ -55,6 +57,17 @@ def company_all(): return CompanyController.all()
 @jwt_required
 def company_create(): return CompanyController.create(request.get_json())
 
+@app.route('/material', methods=['GET'])
+def material_all(): return MaterialController.all()
+
+@app.route('/material', methods=['POST'])
+def material_create(): return MaterialController.create(request.get_json())
+
+@app.route('/measurement', methods=['GET'])
+def measurement_all(): return MeasurementController.all()
+
+@app.route('/measurement', methods=['POST'])
+def measurement_create(): return MeasurementController.create(request.get_json())
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
 @jwt_required
