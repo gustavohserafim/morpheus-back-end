@@ -11,3 +11,10 @@ class MaterialModel:
     def create(data):
         return DB.insert(data, 'material')
 
+    @staticmethod
+    def get(material_id):
+        return DB.SelectById(material_id, ['id', 'ncm', 'name', 'description'], 'material')
+
+    @staticmethod
+    def remove(material_id):
+        return DB.remove(material_id, 'material')

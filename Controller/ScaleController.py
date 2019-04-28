@@ -15,3 +15,11 @@ class ScaleController:
         if result is False:
             return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
         return jsonify({'result': 'ok', 'code': 200})
+    @staticmethod
+    def get(company_id):
+        return jsonify({'result': 'ok', 'data': ScaleModel.get(scale_id)}), 200
+
+    @staticmethod
+    def remove(company_id):
+        ScaleModel.remove(scale_id)
+        return jsonify({'result': 'ok'}), 200
