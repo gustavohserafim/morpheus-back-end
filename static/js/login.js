@@ -11,20 +11,22 @@ function login() {
         dataType: "json",
         contentType: 'application/json',
         data: data,
-        success: function (data) {
-            var token = data['data']['token'];
+        statusCode: {
+            200: function (data) {
+                var token = data['data']['token'];
 
-            $.cookie('access_token_cookie', token);
+                $.cookie('access_token_cookie', token);
 
-            $.ajaxSetup({
-                headers: {
-                    'Authorization': $.cookie('access_token_cookie')
-                }
-            });
+                $.ajaxSetup({
+                    headers: {
+                        'Authorization': $.cookie('access_token_cookie')
+                    }
+                });
 
-            window.location = '/static/index.html';
-        },
-        error: $('#login_error').show()
+                window.location = '/static/index.html';
+            },
+            401: $('#login_error').show(),
+        }
     });
 
 }

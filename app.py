@@ -12,16 +12,16 @@ from Controller.MaterialController import *
 app = Flask(__name__)
 
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_COOKIE_SECURE'] = False # Set to true in production
+app.config['JWT_COOKIE_SECURE'] = False  # Set to true in production
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
 app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_SECRET_KEY'] = 'adASKninau219378wad212'  # Set with environment variable in production
 
-app.config['MYSQL_HOST'] = 'remotemysql.com' # Set with environment variable in production
-app.config['MYSQL_USER'] = 'M3SrwmVxfO' # Set with environment variable in production
-app.config['MYSQL_PASSWORD'] = 'rSai0ZK1ZG' # Set with environment variable in production
-app.config['MYSQL_DB'] = 'M3SrwmVxfO' # Set with environment variable in production
+app.config['MYSQL_HOST'] = 'remotemysql.com'  # Set with environment variable in production
+app.config['MYSQL_USER'] = 'M3SrwmVxfO'       # Set with environment variable in production
+app.config['MYSQL_PASSWORD'] = 'rSai0ZK1ZG'   # Set with environment variable in production
+app.config['MYSQL_DB'] = 'M3SrwmVxfO'         # Set with environment variable in production
 
 jwt = JWTManager(app)
 mysql = MySQL(app)
