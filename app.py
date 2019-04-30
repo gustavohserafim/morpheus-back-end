@@ -8,6 +8,8 @@ from Controller.AuthController import *
 from Controller.Adm.UserController import *
 from Controller.MeasurementController import *
 from Controller.MaterialController import *
+from Controller.ClientController import *
+from Controller.AdressController import *
 
 app = Flask(__name__)
 
@@ -52,10 +54,21 @@ def logout():
 @jwt_required
 def company_all(): return CompanyController.all()
 
-
 @app.route('/api/company', methods=['POST'])
 @jwt_required
 def company_create(): return CompanyController.create(request.get_json())
+
+@app.route('/client', methods=['GET'])
+def client_all(): return ClientController.all()
+
+@app.route('/client', methods=['POST'])
+def client_create(): return ClientController.create(request.get_json())
+
+@app.route('/adress', methods=['GET'])
+def adress_all(): return AdressController.all()
+
+@app.route('/adress', methods=['POST'])
+def adress_create(): return AdressController.create(request.get_json())
 
 @app.route('/material', methods=['GET'])
 def material_all(): return MaterialController.all()
