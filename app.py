@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
-import mysql.connector
+#import mysql.connector
+from flask_mysqldb import MySQL
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
@@ -10,6 +11,7 @@ from Controller.MeasurementController import *
 from Controller.MaterialController import *
 from Controller.ClientController import *
 from Controller.AdressController import *
+from Controller.CommercialInvoiceController import *
 
 app = Flask(__name__)
 
@@ -20,13 +22,19 @@ app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_SECRET_KEY'] = 'adASKninau219378wad212'  # Set with environment variable in production
 
+app.config['MYSQL_HOST'] = 'remotemysql.com'  # Set with environment variable in production
+app.config['MYSQL_USER'] = 'M3SrwmVxfO'       # Set with environment variable in production
+app.config['MYSQL_PASSWORD'] = 'rSai0ZK1ZG'   # Set with environment variable in production
+app.config['MYSQL_DB'] = 'M3SrwmVxfO'         # Set with environment variable in production
+
+mysql = MySQL(app)
 jwt = JWTManager(app)
-mysql = mysql.connector.connect(
-  host="remotemysql.com",
-  user="M3SrwmVxfO",
-  passwd="rSai0ZK1ZG",
-  database="M3SrwmVxfO"
-)
+#mysql = mysql.connector.connect(
+#  host="tioogu.mysql.pythonanywhere-services.com",
+ # user="tioogu",
+  #passwd="MorpheusOpe789",
+  #database="tioogu$morpheus"
+#)
 
 
 @app.route('/user', methods=['POST'])
@@ -54,33 +62,43 @@ def logout():
 @jwt_required
 def company_all(): return CompanyController.all()
 
+
 @app.route('/api/company', methods=['POST'])
 @jwt_required
 def company_create(): return CompanyController.create(request.get_json())
 
+
 @app.route('/client', methods=['GET'])
 def client_all(): return ClientController.all()
+
 
 @app.route('/client', methods=['POST'])
 def client_create(): return ClientController.create(request.get_json())
 
+
 @app.route('/adress', methods=['GET'])
 def adress_all(): return AdressController.all()
+
 
 @app.route('/adress', methods=['POST'])
 def adress_create(): return AdressController.create(request.get_json())
 
+
 @app.route('/material', methods=['GET'])
 def material_all(): return MaterialController.all()
+
 
 @app.route('/material', methods=['POST'])
 def material_create(): return MaterialController.create(request.get_json())
 
+
 @app.route('/measurement', methods=['GET'])
 def measurement_all(): return MeasurementController.all()
 
+
 @app.route('/measurement', methods=['POST'])
 def measurement_create(): return MeasurementController.create(request.get_json())
+
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
 @jwt_required
@@ -90,3 +108,8 @@ def company_get(company_id): return CompanyController.get(company_id)
 @app.route('/api/company/<int:company_id>', methods=['DELETE'])
 @jwt_required
 def company_remove(company_id): return CompanyController.remove(company_id)
+
+
+@app.route('/api/home', methods=['GET'])
+@jwt_required
+def home(): return CommercialInvoiceController.getHome()

@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Morpheus CI</title>
-    <link rel="shortcut icon" href="img/favicon.ico" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/index.js" defer="defer"></script>
-    <script src="/static/js/jqueryCookies.js" defer="defer"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen"/>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/menu.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/jqueryCookies.js"></script>
+    <title>Home - Morpheus CI</title>
 </head>
 <body>
-    <h1>Morpheus CI</h1>
+<nav class=" light-blue darken-4">
+    <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo right">Morpheus</a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li><a href="#">Pagina Inicial</a></li>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Endereço</a></li>
+            <li><a href="#">Materiais</a></li>
+            <li><a href="#">Medidas</a></li>
+        </ul>
+        <ul class="side-nav" id="menu-mobile">
+            <li><a href="#">Pagina Inicial</a></li>
+            <li><a href="#">Clientes</a></li>
+            <li><a href="#">Endereço</a></li>
+            <li><a href="#">Materiais</a></li>
+            <li><a href="#">Medidas</a></li>
+        </ul>
+    </div>
+</nav>
+<h1>Commercial Invoices</h1>
+<p id="ci"></p>
+<br/>
+<footer class="page-footer light-blue darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Titulo dos footer</h5>
+                <p class="grey-text text-lighten-4">Conteudo do footer!</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Project Morpheus. all Copyright reserved.
+        </div>
+    </div>
+</footer>
+
+
 </body>
 </html>

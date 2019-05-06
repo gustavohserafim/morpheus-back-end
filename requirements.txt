@@ -4,6 +4,7 @@ Flask-JWT-Extended==3.18.1
 itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
+mysql-connector==2.2.9
 protobuf==3.7.1
 PyJWT==1.7.1
 six==1.12.0
