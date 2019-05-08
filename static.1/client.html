@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - Morpheus CI</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/js/client.js"></script>
+</head>
+<body>
+<div class="client_div">
+    <form id="client_form">
+        <h1><b>Cadastros</b></h1><br>
+            <fieldset id="client_field"><legend>Dados do comprador</legend>
+
+                <label for="name">Empresa:</label> <input type="text" name="client_name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
+                <label for="phone">Telefone:</label> <input type="text" name="phone_name" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                <label for="fax">Fax:</label> <input type="text" name="fax" id="fax_name" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
+                <input type="button" class="btn btn-info" value="Cadastrar" id="client_button" onclick="send_client()">
+
+            </fieldset>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,24 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro - Morpheus CI</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/measurement.js"></script>
-</head>
-<body>
-<div class="measurement_div">
-    <form id="measurement_form">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="measurement_field"><legend>Embalagem</legend>
-
-                <label for="name">Embalagem:</label> <input type="text" name="measurement_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
-                <label for="description">Descrição:</label> <input type="text" name="description_name" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_measurement()">
-
-            </fieldset>
-    </form>
-</div>
-
-</body>
+    <head>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/menu.js" defer></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/jqueryCookies.js"></script>
+        <title>Cadastro - Morpheus CI</title>
+    </head>
+    <body>
+        <nav class=" light-blue darken-4">
+            <div class="nav-wrapper container">
+                <a href="index.html" class="brand-logo right">Morpheus</a>
+                <a href="#" data-activates="menu-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="index.html">Pagina Inicial</a></li>
+                    <li><a href="client.html">Clientes</a></li>
+                    <li><a href="adress.html">Endereço</a></li>
+                    <li><a href="material.html">Materiais</a></li>
+                     <li><a href="measurement.html">Medidas</a></li>
+                </ul>
+                <ul class="side-nav" id="menu-mobile">
+                    <li><a href="index.html">Pagina Inicial</a></li>
+                     <li><a href="client.html">Clientes</a></li>
+                    <li><a href="adress.html">Endereço</a></li>
+                    <li><a href="material.html">Materiais</a></li>
+                    <li><a href="measurement.html">Medidas</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="measurement_div">
+            <form id="measurement_form">
+                <h1><b>Cadastros</b></h1><br>
+                <fieldset id="measurement_field"><legend>Embalagem</legend>
+                    <label for="name">Embalagem:</label> <input type="text" name="measurement_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
+                    <label for="description">Descrição:</label> <input type="text" name="description_name" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+                    <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_measurement()">
+                </fieldset>
+            </form>
+        </div>
+    </body>
 </html>

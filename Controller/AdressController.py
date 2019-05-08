@@ -1,5 +1,5 @@
 from flask import jsonify
-from Model.AddresModel import *
+from Model.AdressModel import *
 
 
 class AdressController:

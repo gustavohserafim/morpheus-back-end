@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro - Morpheus CI</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/adress.js"></script>
-</head>
-<body>
-<div class="adress_div">
-    <form id="adress_form">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="adress_field"><legend>Endereço</legend>
+    <head>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/menu.js" defer></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/jqueryCookies.js"></script>
+        <title>Cadastro - Morpheus CI</title>
+    </head>
+    <body>
+        <nav class=" light-blue darken-4">
+            <div class="nav-wrapper container">
+                <a href="index.html" class="brand-logo right">Morpheus</a>
+                <a href="#" data-activates="menu-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="index.html">Pagina Inicial</a></li>
+                    <li><a href="client.html">Clientes</a></li>
+                    <li><a href="adress.html">Endereço</a></li>
+                    <li><a href="material.html">Materiais</a></li>
+                    <li><a href="measurement.html">Medidas</a></li>
+                </ul>
+                <ul class="side-nav" id="menu-mobile">
+                    <li><a href="index.html">Pagina Inicial</a></li>
+                    <li><a href="client.html">Clientes</a></li>
+                    <li><a href="adress.html">Endereço</a></li>
+                    <li><a href="material.html">Materiais</a></li>
+                    <li><a href="measurement.html">Medidas</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="adress_div">
+            <form id="adress_form">
+                <h1><b>Cadastros</b></h1><br>
+                    <fieldset id="adress_field"><legend>Endereço</legend>
 
-                <label for="adress">Endereço:</label> <input type="text" name="adress_name" id="adress" size="20" maxlength="255" placeholder="Ex: Grove Street"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="adress_button" onclick="send_adress()">
+                    <label for="adress">Endereço:</label> <input type="text" name="adress_name" id="adress" size="20" maxlength="255" placeholder="Ex: Grove Street"><br><br>
+                    <input type="button" class="btn btn-info" value="Cadastrar" id="adress_button" onclick="send_adress()">
 
-            </fieldset>
-    </form>
-</div>
-
-</body>
+                    </fieldset>
+            </form>
+        </div>
+    </body>
 </html>
