@@ -3,12 +3,9 @@ from flask_mysqldb import MySQL
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
+from Controller.AuthController import *
 from Controller.CompanyController import *
-from Controller.MeasurementController import *
 from Controller.MaterialController import *
-from Controller.AuthController import *
-from Controller.Adm.UserController import *
-from Controller.AuthController import *
 from Controller.Adm.UserController import *
 from Controller.MeasurementController import *
 from Controller.MaterialController import *
