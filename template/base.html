@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/menu.js" defer></script>
+        <script src="js/index.js" defer></script>
+        <script src="js/jqueryCookies.js"></script>
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav class=" light-blue darken-4">
+            <div class="nav-wrapper container">
+                <a href="/" class="brand-logo right">Morpheus</a>
+                <a href="#" data-activates="menu-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="/">Pagina Inicial</a></li>
+                    <li><a href="client">Clientes</a></li>
+                    <li><a href="adress">Endereço</a></li>
+                    <li><a href="material">Materiais</a></li>
+                    <li><a href="measurement">Medidas</a></li>
+                </ul>
+                <ul class="side-nav" id="menu-mobile">
+                    <li><a href="/">Pagina Inicial</a></li>
+                    <li><a href="client">Clientes</a></li>
+                    <li><a href="adress">Endereço</a></li>
+                    <li><a href="material">Materiais</a></li>
+                    <li><a href="measurement">Medidas</a></li>
+                </ul>
+            </div>
+        </nav>
+</body>
+</html>
+{% block content %} {%endblock%}
+
+<footer class="page-footer light-blue darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Titulo dos footer</h5>
+                <p class="grey-text text-lighten-4">Conteudo do footer!</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Project Morpheus. all Copyright reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>
