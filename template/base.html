@@ -4,12 +4,11 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen"/>
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/menu.js" defer></script>
-        <script src="js/index.js" defer></script>
-        <script src="js/jqueryCookies.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/>
+        
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/static/js/client.js"></script>
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
@@ -35,24 +34,38 @@
                 </ul>
             </div>
         </nav>
-</body>
-</html>
-{% block content %} {%endblock%}
 
+{% block content %} {% endblock %}
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/static/js/menu.js" defer></script>
+        <script src="/static/js/index.js" defer></script>
+        <script src="/static/js/jqueryCookies.js"></script>    
 <footer class="page-footer light-blue darken-4">
     <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Titulo dos footer</h5>
-                <p class="grey-text text-lighten-4">Conteudo do footer!</p>
-            </div>
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Morpheus</h5>
+          <p class="grey-text text-lighten-4">Outros</p>
         </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text"></h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#">Fale Conosco</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">Trabalhe conosco</a></li>
+            <li><a class="grey-text text-lighten-3" href="#">SAC</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="footer-copyright">
-        <div class="container">
-            © 2019 Project Morpheus. all Copyright reserved.
-        </div>
+      <div class="container">
+      © 2019 Project Morpheus. Todos os Direitos reservados.
+      <a class="grey-text text-lighten-4 right" href="#!">Outros Links</a>
+      </div>
     </div>
-</footer>
+  </footer>
 </body>
 </html>

@@ -1,7 +1,3 @@
-$(function(){
-    $(".button-collapse").sideNav();
-});
-
 function login() {
 
     var payload = {};
@@ -27,7 +23,7 @@ function login() {
                     }
                 });
 
-                window.location = '/static/index.html';
+                window.location = 'static/index.html';
             },
             401: $('#login_error').show(),
         }
@@ -41,7 +37,7 @@ $(document).ready(function () {
     var token = $.cookie('access_token_cookie');
 
     if (token !== undefined) {
-        window.location = '/static/index.html';
+        window.location = 'static/index.html';
     }
 
 });

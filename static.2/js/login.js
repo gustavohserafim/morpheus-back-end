@@ -1,3 +1,7 @@
+$(function(){
+    $(".button-collapse").sideNav();
+});
+
 function login() {
 
     var payload = {};

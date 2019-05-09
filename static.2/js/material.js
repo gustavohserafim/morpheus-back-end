@@ -1,3 +1,7 @@
+$(function(){
+    $(".button-collapse").sideNav();
+});
+
 function send_material() {
     var payload = [];
     payload.material = $ ("#name").val();

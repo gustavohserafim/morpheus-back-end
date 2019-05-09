@@ -1,7 +1,3 @@
-$(function(){
-    $(".button-collapse").sideNav();
-});
-
 function send_measurement() {
     var payload = [];
     payload.measuremnt = $ ("#name").val();

@@ -1,3 +1,7 @@
+$(function(){
+    $(".button-collapse").sideNav();
+});
+
 function send_client() {
     var payload = {};
     payload.name = $('#name').val();

@@ -1,7 +1,3 @@
-$(function(){
-    $(".button-collapse").sideNav();
-});
-
 function send_adress() {
     var payload = {};
     payload.adress = $('#adress').val();

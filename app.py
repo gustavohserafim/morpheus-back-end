@@ -41,6 +41,8 @@ jwt = JWTManager(app)
 
 template_dir = os.path.join(os.path.dirname(__file__), 'template')
 jinja_env = jinja2.Environment(loader= jinja2.FileSystemLoader(template_dir))
+
+
 @app.route("/")
 def index():
   template = jinja_env.get_template('index.html')
@@ -55,7 +57,6 @@ def adm_user_create():
 # Routes
 @app.route('/token/auth', methods=['POST'])
 def login(): 
-
   return AuthController.login(request.get_json())
 
 
@@ -87,12 +88,12 @@ def company_create():
 
 @app.route('/client', methods=['GET'])
 def client_all(): 
-  template = jinja_env.get_template('client.html')
   return ClientController.all()
 
 
 @app.route('/client', methods=['POST'])
 def client_create(): 
+  template = jinja_env.get_template('client.html')
   return ClientController.create(request.get_json())
 
 
@@ -146,7 +147,7 @@ def company_remove(company_id):
   return CompanyController.remove(company_id)
 
 
-@app.route('/api/home', methods=['GET'])
-@jwt_required
-def home(): 
-  return CommercialInvoiceController.getHome()
+# @app.route('/api/home', methods=['GET'])
+# @jwt_required
+# def home(): 
+#   return CommercialInvoiceController.getHome()
