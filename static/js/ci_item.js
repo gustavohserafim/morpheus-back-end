@@ -1,13 +1,13 @@
-function send_material() {
+function send_ci() {
     var payload = {};
-    payload.name = $ ("#name").val();
-    payload.ncm = $ ("#ncm").val();
-    payload.description= $ ("#description").val();
+    payload.commercial_invoice_id = $('#ci_id').val();
+    payload.measument_unit_id = $('#measurement_id').val();
+    payload.material_id = $('#material_id').val();
     var data = JSON.stringify(payload);
 
     $.ajax({
         type: "POST",
-        url: "/material",
+        url: "/ci",
         dataType: "json",
         contentType: 'application/json',
         data: data,

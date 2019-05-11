@@ -28,7 +28,7 @@ class DB:
     def insert(data, table):
         columns = []
         values = []
-
+        print(data, table)
         for i in data:
             columns.append(i)
             values.append(data[i])

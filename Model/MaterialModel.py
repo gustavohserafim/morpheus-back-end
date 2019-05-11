@@ -9,6 +9,7 @@ class MaterialModel:
 
     @staticmethod
     def create(data):
+        print(data)
         return DB.insert(data, 'material')
 
     @staticmethod

@@ -39,23 +39,15 @@ jwt = JWTManager(app)
   #database="tioogu$morpheus"
 #)
 
-template_dir = os.path.join(os.path.dirname(__file__), 'template')
-jinja_env = jinja2.Environment(loader= jinja2.FileSystemLoader(template_dir))
-@app.route("/")
-def index():
-  template = jinja_env.get_template('index.html')
-  return template.render()
-
 @app.route('/user', methods=['POST'])
-@jwt_required
+# @jwt_required
 def adm_user_create(): 
-  template = jinja_env.get_template('user.html')
+
   return UserController.create(request.get_json())
 
 # Routes
 @app.route('/token/auth', methods=['POST'])
 def login(): 
-
   return AuthController.login(request.get_json())
 
 
@@ -73,21 +65,19 @@ def logout():
 
 
 @app.route('/api/company', methods=['GET'])
-@jwt_required
+# @jwt_required
 def company_all(): 
-  template = jinja_env.get_template('company.html')
   return CompanyController.all()
 
 
 @app.route('/api/company', methods=['POST'])
-@jwt_required
+# @jwt_required
 def company_create(): 
   return CompanyController.create(request.get_json())
 
 
 @app.route('/client', methods=['GET'])
 def client_all(): 
-  template = jinja_env.get_template('client.html')
   return ClientController.all()
 
 
@@ -98,7 +88,6 @@ def client_create():
 
 @app.route('/adress', methods=['GET'])
 def adress_all(): 
-  template = jinja_env.get_template('address.html')
   return AdressController.all()
 
 
@@ -108,45 +97,42 @@ def adress_create():
 
 
 @app.route('/material', methods=['GET'])
-@jwt_required
+# @jwt_required
 def material_all(): 
-  template = jinja_env.get_template('material.html')
   return MaterialController.all()
 
 
 @app.route('/material', methods=['POST'])
-@jwt_required
+# @jwt_required
 def material_create(): 
   return MaterialController.create(request.get_json())
 
 
 @app.route('/measurement', methods=['GET'])
-@jwt_required
+# @jwt_required
 def measurement_all(): 
-  template = jinja_env.get_template('measurement.html')
   return MeasurementController.all()
 
 
 @app.route('/measurement', methods=['POST'])
-@jwt_required
+# @jwt_required
 def measurement_create(): 
   return MeasurementController.create(request.get_json())
 
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
-@jwt_required
+# @jwt_required
 def company_get(company_id): 
-  template = jinja_env.get_template('company.html')
   return CompanyController.get(company_id)
 
 
 @app.route('/api/company/<int:company_id>', methods=['DELETE'])
-@jwt_required
+# @jwt_required
 def company_remove(company_id): 
   return CompanyController.remove(company_id)
 
 
 @app.route('/api/home', methods=['GET'])
-@jwt_required
+# @jwt_required
 def home(): 
   return CommercialInvoiceController.getHome()

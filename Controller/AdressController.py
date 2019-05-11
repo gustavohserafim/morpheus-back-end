@@ -1,7 +1,6 @@
 from flask import jsonify
 from Model.AdressModel import *
 
-
 class AdressController:
 
     @staticmethod
