@@ -11,7 +11,7 @@ class DB:
         names = names[:-1] + ' '
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE removed = 0;'
         mysql = app.mysql
-        cur = mysql.connection.cursor()
+        cur = mysql.cursor()
         cur.execute(sql)
         data = cur.fetchall()
 
@@ -39,7 +39,7 @@ class DB:
 
             mysql = app.mysql
             insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
-            cur = mysql.connection.cursor()
+            cur = mysql.cursor()
             cur.execute(insert_query, values)
             mysql.connection.commit()
             return True
@@ -56,7 +56,7 @@ class DB:
         names = names[:-1] + ' '
 
         mysql = app.mysql
-        cur = mysql.connection.cursor()
+        cur = mysql.cursor()
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND removed = 0;'.format(id)
 
         cur.execute(sql)
@@ -76,7 +76,7 @@ class DB:
         try:
             mysql = app.mysql
             sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
-            cur = mysql.connection.cursor()
+            cur = mysql.cursor()
             cur.execute(sql)
             mysql.connection.commit()
             return True
@@ -88,7 +88,7 @@ class DB:
     def runFetchRow(sql):
 
         mysql = app.mysql
-        cur = mysql.connection.cursor()
+        cur = mysql.cursor()
         cur.execute(sql)
         data = cur.fetchall()
 
@@ -110,7 +110,7 @@ class DB:
     #
     #         mysql = app.mysql
     #         insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
-    #         cur = mysql.connection.cursor()
+    #         cur = mysql.cursor()
     #         cur.execute(insert_query, values)
     #         mysql.connection.commit()
     #         return True

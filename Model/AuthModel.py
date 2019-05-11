@@ -9,7 +9,7 @@ class AuthModel:
     def login(email, password):
 
         mysql = app.mysql
-        cur = mysql.connection.cursor()
+        cur = mysql.cursor()
         sql = '''SELECT email, password FROM user WHERE email = '{}';'''.format(email)
         cur.execute(sql)
         data = cur.fetchone()

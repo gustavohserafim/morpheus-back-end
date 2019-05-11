@@ -1,8 +1,5 @@
-from flask import Flask, request, jsonify
-import os
-import jinja2
-#import mysql.connector
-from flask_mysqldb import MySQL
+from flask import Flask, request
+import mysql.connector
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
@@ -25,19 +22,13 @@ app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_SECRET_KEY'] = 'adASKninau219378wad212'  # Set with environment variable in production
 
-app.config['MYSQL_HOST'] = 'remotemysql.com'  # Set with environment variable in production
-app.config['MYSQL_USER'] = 'M3SrwmVxfO'       # Set with environment variable in production
-app.config['MYSQL_PASSWORD'] = 'rSai0ZK1ZG'   # Set with environment variable in production
-app.config['MYSQL_DB'] = 'M3SrwmVxfO'         # Set with environment variable in production
-
-mysql = MySQL(app)
 jwt = JWTManager(app)
-#mysql = mysql.connector.connect(
-#  host="tioogu.mysql.pythonanywhere-services.com",
- # user="tioogu",
-  #passwd="MorpheusOpe789",
-  #database="tioogu$morpheus"
-#)
+mysql = mysql.connector.connect(
+ host="162.241.2.234",
+ user="ghclim06_morpheu",
+  passwd="rSai0ZK1ZG",
+  database="ghclim06_morpheus"
+)
 
 @app.route('/user', methods=['POST'])
 # @jwt_required
@@ -98,7 +89,7 @@ def adress_create():
 
 @app.route('/material', methods=['GET'])
 # @jwt_required
-def material_all(): 
+def material_all():
   return MaterialController.all()
 
 
