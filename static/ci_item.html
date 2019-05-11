@@ -4,12 +4,15 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/>
-        
-        <meta charset="UTF-8">
+        <!-- <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/> -->
+        <style>
+        select{
+          display: flex;
+        }
+        </style>
     <title>Cadastro - Morpheus CI</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/adress.js"></script>
+    <script src="/static/js/ci_item.js"></script>
 </head>
 <body>
         <nav class=" light-blue darken-4">
@@ -34,22 +37,25 @@
                     </ul>
                 </div>
             </nav>
-<div class="adress_div">
-    <form id="adress_form">
+<div class="">
+    <form id="">
         <h1><b>Cadastros</b></h1><br>
-            <fieldset id="adress_field"><legend>Endereço</legend>
+            <fieldset id="send_ci"><legend>Lista de Produtos</legend>
+                <select action="/static/material.html" name="measurement_id" id="measurement_id" method="GET">
+                    <option value="#material_id"></option>
+                </select>
 
-                <label for="client_id">Cliente:<input type="number" name="client_id" placeholder="1" id="client_id"></label>
-                <label for="adress">Endereço:</label> <input type="text" name="adress_name" id="adress" size="20" maxlength="255" placeholder="Ex: Grove Street"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="adress_button" onclick="send_adress()">
+                <label for="description">Descrição:</label> <input type="text" name="description_name" id="material_id" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_ci()">
 
             </fieldset>
     </form>
-</div>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <script type="text/javascript" src="/static/js/menu.js" defer></script>
+            <!-- <script type="text/javascript" src="/static/js/menu.js" defer></script> -->
             <script src="/static/js/index.js" defer></script>
             <script src="/static/js/jqueryCookies.js"></script>    
     <footer class="page-footer light-blue darken-4">

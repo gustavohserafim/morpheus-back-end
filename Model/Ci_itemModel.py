@@ -10,7 +10,7 @@ class Ci_itemModel:
     @staticmethod
     def create(data):
         return DB.insert(data, 'ci_item')
-@staticmethod
+    @staticmethod
     def get(ci_item_id):
         return DB.SelectById(ci_item_id, ['id', 'commercial_invoice_id', 'measurement_unit_id','material_id'], 'ci_item')
 
