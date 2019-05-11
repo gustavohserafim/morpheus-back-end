@@ -13,6 +13,7 @@ from Controller.AdressController import *
 from Controller.CommercialInvoiceController import *
 
 app = Flask(__name__)
+jwt = JWTManager(app)
 
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_COOKIE_SECURE'] = False  # Set to true in production
@@ -48,73 +49,73 @@ def logout():
 
 @app.route('/api/company', methods=['GET'])
 # @jwt_required
-def company_all(): 
-  return CompanyController.all()
+def company_all():
+    return CompanyController.all()
 
 
 @app.route('/api/company', methods=['POST'])
 # @jwt_required
-def company_create(): 
-  return CompanyController.create(request.get_json())
+def company_create():
+    return CompanyController.create(request.get_json())
 
 
 @app.route('/client', methods=['GET'])
-def client_all(): 
-  return ClientController.all()
+def client_all():
+    return ClientController.all()
 
 
 @app.route('/client', methods=['POST'])
-def client_create(): 
-  return ClientController.create(request.get_json())
+def client_create():
+    return ClientController.create(request.get_json())
 
 
 @app.route('/adress', methods=['GET'])
-def adress_all(): 
-  return AdressController.all()
+def adress_all():
+    return AdressController.all()
 
 
 @app.route('/adress', methods=['POST'])
-def adress_create(): 
-  return AdressController.create(request.get_json())
+def adress_create():
+    return AdressController.create(request.get_json())
 
 
 @app.route('/material', methods=['GET'])
 # @jwt_required
 def material_all():
-  return MaterialController.all()
+    return MaterialController.all()
 
 
 @app.route('/material', methods=['POST'])
 # @jwt_required
-def material_create(): 
-  return MaterialController.create(request.get_json())
+def material_create():
+    return MaterialController.create(request.get_json())
 
 
 @app.route('/measurement', methods=['GET'])
 # @jwt_required
-def measurement_all(): 
-  return MeasurementController.all()
+def measurement_all():
+    return MeasurementController.all()
 
 
 @app.route('/measurement', methods=['POST'])
 # @jwt_required
-def measurement_create(): 
-  return MeasurementController.create(request.get_json())
+def measurement_create():
+    return MeasurementController.create(request.get_json())
 
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])
 # @jwt_required
-def company_get(company_id): 
-  return CompanyController.get(company_id)
+def company_get(company_id):
+    return CompanyController.get(company_id)
 
 
 @app.route('/api/company/<int:company_id>', methods=['DELETE'])
 # @jwt_required
-def company_remove(company_id): 
-  return CompanyController.remove(company_id)
+def company_remove(company_id):
+    return CompanyController.remove(company_id)
 
 
 @app.route('/api/home', methods=['GET'])
 # @jwt_required
-def home(): 
-  return CommercialInvoiceController.getHome()
+def home():
+    return CommercialInvoiceController.getHome()
