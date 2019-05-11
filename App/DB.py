@@ -1,4 +1,11 @@
-import app
+import mysql.connector
+
+mysql = mysql.connector.connect(
+ host="162.241.2.234",
+ user="ghclim06_morpheu",
+  passwd="rSai0ZK1ZG",
+  database="ghclim06_morpheus"
+)
 
 
 class DB:
@@ -10,7 +17,6 @@ class DB:
             names = names + i + ','
         names = names[:-1] + ' '
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE removed = 0;'
-        mysql = app.mysql
         cur = mysql.cursor()
         cur.execute(sql)
         data = cur.fetchall()
@@ -36,8 +42,6 @@ class DB:
         query_placeholders = ', '.join(['%s'] * len(values))
         query_columns = ', '.join(columns)
         try:
-
-            mysql = app.mysql
             insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
             cur = mysql.cursor()
             cur.execute(insert_query, values)
@@ -55,7 +59,6 @@ class DB:
             names = names + i + ','
         names = names[:-1] + ' '
 
-        mysql = app.mysql
         cur = mysql.cursor()
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND removed = 0;'.format(id)
 
@@ -74,7 +77,6 @@ class DB:
     @staticmethod
     def remove(id, table):
         try:
-            mysql = app.mysql
             sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
             cur = mysql.cursor()
             cur.execute(sql)
@@ -87,7 +89,6 @@ class DB:
     @staticmethod
     def runFetchRow(sql):
 
-        mysql = app.mysql
         cur = mysql.cursor()
         cur.execute(sql)
         data = cur.fetchall()

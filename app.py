@@ -1,5 +1,4 @@
 from flask import Flask, request
-import mysql.connector
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
@@ -22,30 +21,22 @@ app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_SECRET_KEY'] = 'adASKninau219378wad212'  # Set with environment variable in production
 
-jwt = JWTManager(app)
-mysql = mysql.connector.connect(
- host="162.241.2.234",
- user="ghclim06_morpheu",
-  passwd="rSai0ZK1ZG",
-  database="ghclim06_morpheus"
-)
 
 @app.route('/user', methods=['POST'])
 # @jwt_required
-def adm_user_create(): 
-
-  return UserController.create(request.get_json())
+def adm_user_create():
+    return UserController.create(request.get_json())
 
 # Routes
 @app.route('/token/auth', methods=['POST'])
-def login(): 
-  return AuthController.login(request.get_json())
+def login():
+    return AuthController.login(request.get_json())
 
 
 @app.route('/token/refresh', methods=['POST'])
 @jwt_refresh_token_required
-def refresh(): 
-  return AuthController.refresh_token(get_jwt_identity())
+def refresh():
+    return AuthController.refresh_token(get_jwt_identity())
 
 
 @app.route('/token/remove', methods=['DELETE'])
