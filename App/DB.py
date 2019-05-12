@@ -1,37 +1,23 @@
-import mysql.connector
-
-mysql = mysql.connector.connect(
- host="162.241.2.234",
- user="ghclim06_morpheu",
-  passwd="rSai0ZK1ZG",
-  database="ghclim06_morpheus"
-)
-
+import app
 
 class DB:
 
     @staticmethod
     def selectAll(columns, table):
+        cur = app.mysql.cursor(dictionary=True)
         names = ''
         for i in columns:
             names = names + i + ','
         names = names[:-1] + ' '
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE removed = 0;'
-        cur = mysql.cursor()
         cur.execute(sql)
         data = cur.fetchall()
 
-        result = []
-        for k, v1 in enumerate(data):
-            row = {}
-            for k, v2 in enumerate(v1):
-                row.update({columns[k]: v2})
-            result.append(row)
-
-        return result
+        return data
 
     @staticmethod
     def insert(data, table):
+        cur = app.mysql.cursor(dictionary=True)
         columns = []
         values = []
         print(data, table)
@@ -43,9 +29,8 @@ class DB:
         query_columns = ', '.join(columns)
         try:
             insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
-            cur = mysql.cursor()
             cur.execute(insert_query, values)
-            mysql.connection.commit()
+            cur.connection.commit()
             return True
         except Exception as e:
             print(e)
@@ -54,12 +39,13 @@ class DB:
 
     @staticmethod
     def SelectById(id, columns, table):
+        cur = app.mysql.cursor(dictionary=True)
         names = ''
         for i in columns:
             names = names + i + ','
         names = names[:-1] + ' '
 
-        cur = mysql.cursor()
+
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND removed = 0;'.format(id)
 
         cur.execute(sql)
@@ -76,11 +62,12 @@ class DB:
 
     @staticmethod
     def remove(id, table):
+        cur = app.mysql.cursor(dictionary=True)
         try:
             sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
-            cur = mysql.cursor()
+
             cur.execute(sql)
-            mysql.connection.commit()
+            cur.connection.commit()
             return True
         except Exception as e:
             print(e)
@@ -88,8 +75,7 @@ class DB:
 
     @staticmethod
     def runFetchRow(sql):
-
-        cur = mysql.cursor()
+        cur = app.mysql.cursor(dictionary=True)
         cur.execute(sql)
         data = cur.fetchall()
 
@@ -109,7 +95,7 @@ class DB:
     #     query_columns = ', '.join(columns)
     #     try:
     #
-    #         mysql = app.mysql
+    #         db = app.mysql
     #         insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
     #         cur = mysql.cursor()
     #         cur.execute(insert_query, values)

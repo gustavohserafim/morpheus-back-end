@@ -16,7 +16,40 @@ function send_client() {
     });
 }
 
+function getClients() {
+
+    $('#clients').DataTable( {
+        "ajax": "/client",
+        "columns": [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "phone" },
+            { "data": "fax" },
+            { "data": "contact" }
+        ]
+    } );
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: "/client",
+    //     dataType: "json",
+    //     contentType: 'application/json',
+    //     statusCode: {
+    //         200: function (data) {
+    //             return data
+    //         }
+    //     }
+    // });
+
+
+
+}
+
 $(document).ready(function () {
+
+    getClients();
+
+
 
     // var token = $.cookie('access_token_cookie');
 
