@@ -21,7 +21,7 @@ function getHome() {
 }
 
 $(document).ready(function () {
-   checkLoggedUser();
+    checkLoggedUser();
 
 
 });

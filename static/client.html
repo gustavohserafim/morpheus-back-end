@@ -1,82 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/>
-        
-        <meta charset="UTF-8">
-    <title>Cadastro - Morpheus CI</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <title>Clientes - Morpheus CI</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/client.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/static/js/index.js" defer="defer"></script>
+    <script src="/static/js/client.js" defer="defer"></script>
+    <script src="/static/js/jqueryCookies.js"></script>
+
 </head>
 <body>
-        <nav class=" light-blue darken-4">
-                <div class="nav-wrapper container">
-                    <a href="/static/index.html" class="brand-logo right">Morpheus</a>
-                    <a href="#" data-activates="menu-mobile" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a>
-                    <ul class="left hide-on-med-and-down">
-                        <li><a href="/static/index.html">Pagina Inicial</a></li>
-                        <li><a href="/static/client.html">Clientes</a></li>
-                        <li><a href="/static/adress.html">Endereço</a></li>
-                        <li><a href="/static/material.html">Materiais</a></li>
-                        <li><a href="/static/measurement.html">Medidas</a></li>
-                    </ul>
-                    <ul class="side-nav" id="menu-mobile">
-                        <li><a href="/">Pagina Inicial</a></li>
-                        <li><a href="/static/client.html">Clientes</a></li>
-                        <li><a href="/static/adress.html">Endereço</a></li>
-                        <li><a href="/static/material.html">Materiais</a></li>
-                        <li><a href="/static/measurement.html">Medidas</a></li>
-                    </ul>
-                </div>
-            </nav>
-<div class="client_div">
+<nav class=" light-blue darken-4">
+    <div class="nav-wrapper container">
+        <a href="/static/index.html" class="brand-logo right">Morpheus</a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li><a href="/static/index.html">Pagina Inicial</a></li>
+            <li><a href="/static/client.html">Clientes</a></li>
+            <li><a href="/static/adress.html">Endereço</a></li>
+            <li><a href="/static/material.html">Materiais</a></li>
+            <li><a href="/static/measurement.html">Medidas</a></li>
+        </ul>
+        <ul class="side-nav" id="menu-mobile">
+            <li><a href="/">Pagina Inicial</a></li>
+            <li><a href="/static/client.html">Clientes</a></li>
+            <li><a href="/static/adress.html">Endereço</a></li>
+            <li><a href="/static/material.html">Materiais</a></li>
+            <li><a href="/static/measurement.html">Medidas</a></li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <table id="clients" class="display" style="width:80%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Fax</th>
+                <th>Contato</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Fax</th>
+                <th>Contato</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<button>Adicionar cliente</button>
+<div class="client_div" >
     <form id="client_form">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="client_field"><legend>Dados do comprador</legend>
+        <h1><b>Clientes</b></h1><br>
+        <fieldset id="client_field"><legend>Dados do cliente</legend>
 
-                <label for="name">Empresa:</label> <input type="text" name="client_name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
-                <label for="phone">Telefone:</label> <input type="text" name="phone_name" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-                <label for="fax">Fax:</label> <input type="text" name="fax" id="fax_name" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-                <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="client_button" onclick="send_client()">
+            <label for="name">Empresa:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
+            <label for="phone">Telefone:</label> <input type="text" name="phone" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+            <label for="fax">Fax:</label> <input type="text" name="fax" id="fax" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+            <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
+            <input type="button" class="btn btn-info" value="Cadastrar" id="client_button" onclick="send_client()">
 
-            </fieldset>
+        </fieldset>
     </form>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <script type="text/javascript" src="/static/js/menu.js" defer></script>
-            <script src="/static/js/index.js" defer></script>
-            <script src="/static/js/jqueryCookies.js"></script>    
-    <footer class="page-footer light-blue darken-4">
-        <div class="container">
-          <div class="row">
+<footer class="page-footer light-blue darken-4">
+    <div class="container">
+        <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">Morpheus</h5>
-              <p class="grey-text text-lighten-4">Outros</p>
+                <h5 class="white-text">Morpheus</h5>
+                <p class="grey-text text-lighten-4">Outros</p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text"></h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#">Fale Conosco</a></li>
-                <li><a class="grey-text text-lighten-3" href="#">Trabalhe conosco</a></li>
-                <li><a class="grey-text text-lighten-3" href="#">SAC</a></li>
-              </ul>
+                <h5 class="white-text"></h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Fale Conosco</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Trabalhe conosco</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">SAC</a></li>
+                </ul>
             </div>
-          </div>
         </div>
-        <div class="footer-copyright">
-          <div class="container">
-          © 2019 Project Morpheus. Todos os Direitos reservados.
-          <a class="grey-text text-lighten-4 right" href="#!">Outros Links</a>
-          </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Project Morpheus. Todos os Direitos reservados.
+            <a class="grey-text text-lighten-4 right" href="#!">Outros Links</a>
         </div>
-      </footer>
-    </body>
-    </html>
+    </div>
+</footer>
+</body>
+</html>
