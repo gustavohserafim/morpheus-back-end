@@ -1,5 +1,5 @@
 from flask import Flask, request
-import mysql.connector
+
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
@@ -12,13 +12,6 @@ from Controller.MaterialController import *
 from Controller.ClientController import *
 from Controller.AdressController import *
 from Controller.CommercialInvoiceController import *
-
-mysql = mysql.connector.connect(
-        host="162.241.2.234",
-        user="ghclim06_morpheu",
-        passwd="rSai0ZK1ZG",
-        database="ghclim06_morpheus"
-    )
 
 app = Flask(__name__)
 jwt = JWTManager(app)

@@ -1,5 +1,5 @@
 from werkzeug.security import check_password_hash
-from App.DB import *
+from App.DB import DB
 from flask_jwt_extended import create_access_token, create_refresh_token
 
 
@@ -7,14 +7,9 @@ class AuthModel:
 
     @staticmethod
     def login(email, password):
-
-        mysql = app.mysql
-        cur = mysql.cursor()
-        sql = '''SELECT email, password FROM user WHERE email = '{}';'''.format(email)
-        cur.execute(sql)
-        data = cur.fetchone()
-
-        if data is None or not check_password_hash(data[1], password):
+        db = DB()
+        db_password = db.getPasswordByEmail(email)['password']
+        if email is None or not check_password_hash(db_password, password):
             return False
 
         response = {

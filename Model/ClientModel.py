@@ -5,7 +5,8 @@ class ClientModel:
 
     @staticmethod
     def all():
-        return DB.selectAll(['id', 'name', 'phone', 'fax', 'contact'], 'client')
+        db = DB()
+        return db.selectAll(['id', 'name', 'phone', 'fax', 'contact'], 'client')
 
     @staticmethod
     def create(data):
