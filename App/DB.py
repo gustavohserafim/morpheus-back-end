@@ -85,6 +85,9 @@ class DB:
             return False
         return password
 
+    def __del__(self):
+        self._conn.close()
+
     # @staticmethod
     # def update(id, params, table):
     #
