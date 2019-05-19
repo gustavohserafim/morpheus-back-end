@@ -1,0 +1,5 @@
+set HOST=morpheus.cvpjto4bzwfx.sa-east-1.rds.amazonaws.com
+set USER=morpheus
+set PASSWD=ad75pFVpWbBMQgqs
+set DB=morpheus_dev
+set SECRET_KEY=adASKninau219378wad212

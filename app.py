@@ -146,9 +146,9 @@ def client():
     return render_template("client.html")
 
 
-@app.route('/adress')
-def adress():
-    return render_template("adress.html")
+@app.route('/address')
+def address():
+    return render_template("address.html")
 
 
 @app.route('/material')

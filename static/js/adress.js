@@ -7,7 +7,7 @@ function send_adress() {
     console.log(payload);
     $.ajax({
         type: "POST",
-        url: "/adress",
+        url: "/address",
         dataType: "json",
         contentType: 'application/json',
         data: data,
