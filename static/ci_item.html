@@ -48,6 +48,10 @@
                 <label for="description">Descrição:</label> <input type="text" name="description_name" id="material_id" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
                 <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_ci()">
 
+                <a href="#modal" class="btn orange modal-trigger">Material</a>
+                <div class="modal" id='modal'>
+                  
+                </div>
             </fieldset>
     </form>
 
@@ -82,5 +86,11 @@
           </div>
         </div>
       </footer>
+      <!-- Mudar para o js modal -->
+      <script>
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
+      </script>
     </body>
     </html>

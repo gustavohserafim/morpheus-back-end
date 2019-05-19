@@ -12,6 +12,7 @@ from Controller.MaterialController import *
 from Controller.ClientController import *
 from Controller.AdressController import *
 from Controller.CommercialInvoiceController import *
+from Controller.CiController import *
 
 mysql = mysql.connector.connect(
         host="162.241.2.234",
@@ -75,6 +76,15 @@ def client_all():
 @app.route('/client', methods=['POST'])
 def client_create():
     return ClientController.create(request.get_json())
+
+@app.route('/ci', methods=['GET'])
+def ci_all():
+    return CiController.all()
+
+
+@app.route('/ci', methods=['POST'])
+def ci_create():
+    return CiController.create(request.get_json())
 
 
 @app.route('/adress', methods=['GET'])
