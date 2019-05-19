@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from os import environ
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
@@ -129,3 +129,11 @@ def company_remove(company_id):
 # @jwt_required
 def home():
     return CommercialInvoiceController.getHome()
+
+@app.route('/index')
+def index():
+    return render_template("index.html")
+
+@app.route('/login')
+def logar():
+    return render_template("login.html")
