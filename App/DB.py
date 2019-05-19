@@ -1,13 +1,14 @@
 import mysql.connector
+from os import environ
 
 
 class DB:
 
     def __init__(self):
-        self._conn = mysql.connector.connect(host="162.241.2.234",
-                                             user="ghclim06_morpheu",
-                                             passwd="rSai0ZK1ZG",
-                                             database="ghclim06_morpheus")
+        self._conn = mysql.connector.connect(host=environ['HOST'],
+                                             user=environ['USER'],
+                                             passwd=environ['PASSWD'],
+                                             database=environ['DB'])
         self._cur = self._conn.cursor(dictionary=True)
 
     def selectAll(self, columns, table):

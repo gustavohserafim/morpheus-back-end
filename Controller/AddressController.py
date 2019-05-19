@@ -1,15 +1,16 @@
 from flask import jsonify
-from Model.AdressModel import *
+from Model.AddressModel import *
 
-class AdressController:
+
+class AddressController:
 
     @staticmethod
     def all():
-        return jsonify(AdressModel.all())
+        return jsonify(AddressModel.all())
 
     @staticmethod
     def create(data):
-        result = AdressModel.create(data)
+        result = AddressModel.create(data)
 
         if result is False:
             return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
@@ -17,9 +18,9 @@ class AdressController:
 
     @staticmethod
     def get(id):
-        return jsonify({'result': 'ok', 'data': AdressModel.get(id)}), 200
+        return jsonify({'result': 'ok', 'data': AddressModel.get(id)}), 200
 
     @staticmethod
     def remove(id):
-        AdressModel.remove(id)
+        AddressModel.remove(id)
         return jsonify({'result': 'ok'}), 200

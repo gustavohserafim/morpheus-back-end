@@ -7,8 +7,7 @@ class AuthModel:
 
     @staticmethod
     def login(email, password):
-        db = DB()
-        db_password = db.getPasswordByEmail(email)['password']
+        db_password = DB().getPasswordByEmail(email)['password']
         if email is None or not check_password_hash(db_password, password):
             return False
 
