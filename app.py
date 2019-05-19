@@ -1,25 +1,17 @@
 from flask import Flask, request
-import mysql.connector
+from os import environ
 from flask_jwt_extended import (
     JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
 )
 from Controller.AuthController import *
 from Controller.CompanyController import *
-from Controller.MaterialController import *
 from Controller.Adm.UserController import *
 from Controller.MeasurementController import *
 from Controller.MaterialController import *
 from Controller.ClientController import *
-from Controller.AdressController import *
+from Controller.AddressController import *
 from Controller.CommercialInvoiceController import *
 from Controller.CiController import *
-
-mysql = mysql.connector.connect(
-        host="162.241.2.234",
-        user="ghclim06_morpheu",
-        passwd="rSai0ZK1ZG",
-        database="ghclim06_morpheus"
-    )
 
 app = Flask(__name__)
 jwt = JWTManager(app)
@@ -29,7 +21,7 @@ app.config['JWT_COOKIE_SECURE'] = False  # Set to true in production
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
 app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = True
-app.config['JWT_SECRET_KEY'] = 'adASKninau219378wad212'  # Set with environment variable in production
+app.config['JWT_SECRET_KEY'] = environ['SECRET_KEY']
 
 
 @app.route('/user', methods=['POST'])
@@ -68,12 +60,12 @@ def company_create():
     return CompanyController.create(request.get_json())
 
 
-@app.route('/client', methods=['GET'])
+@app.route('/api/client', methods=['GET'])
 def client_all():
     return ClientController.all()
 
 
-@app.route('/client', methods=['POST'])
+@app.route('/api/client', methods=['POST'])
 def client_create():
     return ClientController.create(request.get_json())
 
@@ -87,35 +79,35 @@ def ci_create():
     return CiController.create(request.get_json())
 
 
-@app.route('/adress', methods=['GET'])
-def adress_all():
-    return AdressController.all()
+@app.route('/api/address', methods=['GET'])
+def address_all():
+    return AddressController.all()
 
 
-@app.route('/adress', methods=['POST'])
-def adress_create():
-    return AdressController.create(request.get_json())
+@app.route('/api/address', methods=['POST'])
+def address_create():
+    return AddressController.create(request.get_json())
 
 
-@app.route('/material', methods=['GET'])
+@app.route('/api/material', methods=['GET'])
 # @jwt_required
 def material_all():
     return MaterialController.all()
 
 
-@app.route('/material', methods=['POST'])
+@app.route('/api/material', methods=['POST'])
 # @jwt_required
 def material_create():
     return MaterialController.create(request.get_json())
 
 
-@app.route('/measurement', methods=['GET'])
+@app.route('/api/measurement', methods=['GET'])
 # @jwt_required
 def measurement_all():
     return MeasurementController.all()
 
 
-@app.route('/measurement', methods=['POST'])
+@app.route('/api/measurement', methods=['POST'])
 # @jwt_required
 def measurement_create():
     return MeasurementController.create(request.get_json())
