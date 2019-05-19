@@ -1,10 +1,18 @@
-import app
+import mysql.connector
+from os import environ
+
 
 class DB:
 
-    @staticmethod
-    def selectAll(columns, table):
-        cur = app.mysql.cursor(dictionary=True)
+    def __init__(self):
+        self._conn = mysql.connector.connect(host=environ['HOST'],
+                                             user=environ['USER'],
+                                             passwd=environ['PASSWD'],
+                                             database=environ['DB'])
+        self._cur = self._conn.cursor(dictionary=True)
+
+    def selectAll(self, columns, table):
+        cur = self._cur
         names = ''
         for i in columns:
             names = names + i + ','
@@ -12,15 +20,13 @@ class DB:
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE removed = 0;'
         cur.execute(sql)
         data = cur.fetchall()
-
         return data
 
-    @staticmethod
-    def insert(data, table):
-        cur = app.mysql.cursor(dictionary=True)
+    def insert(self, data, table):
+        cur = self._cur
         columns = []
         values = []
-        print(data, table)
+
         for i in data:
             columns.append(i)
             values.append(data[i])
@@ -37,35 +43,24 @@ class DB:
             return False
         # cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
 
-    @staticmethod
-    def SelectById(id, columns, table):
-        cur = app.mysql.cursor(dictionary=True)
+    def SelectById(self, id, columns, table):
+        cur = self._cur
         names = ''
         for i in columns:
             names = names + i + ','
         names = names[:-1] + ' '
 
-
         sql = 'SELECT ' + names + 'FROM ' + table + ' WHERE id = {} AND removed = 0;'.format(id)
 
         cur.execute(sql)
         data = cur.fetchall()
+        return data
 
-        result = []
-        for k, v1 in enumerate(data):
-            row = {}
-            for k, v2 in enumerate(v1):
-                row.update({columns[k]: v2})
-            result.append(row)
+    def remove(self, id, table):
 
-        return result
-
-    @staticmethod
-    def remove(id, table):
-        cur = app.mysql.cursor(dictionary=True)
         try:
             sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
-
+            cur = self._cur
             cur.execute(sql)
             cur.connection.commit()
             return True
@@ -73,13 +68,22 @@ class DB:
             print(e)
             return False
 
-    @staticmethod
-    def runFetchRow(sql):
-        cur = app.mysql.cursor(dictionary=True)
+    def runFetchRow(self, sql):
+        cur = self._cur
         cur.execute(sql)
         data = cur.fetchall()
 
         return data
+
+    def getPasswordByEmail(self, email):
+        cur = self._cur
+        sql = '''SELECT password FROM user WHERE email = '{}';'''.format(email)
+        cur.execute(sql)
+        password = cur.fetchone()
+        print(password)
+        if password is None:
+            return False
+        return password
 
     # @staticmethod
     # def update(id, params, table):
