@@ -1,37 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/css/estilo.css" media="screen"/>
+{% extends "base.html" %}
+    {% block head %}
+        <script src="/js/material.js"></script>
+    {% endblock %}
+
+    {% block content %}
+        <div class="material_div">
+            <form id="material_form">
+                <h1><b>Cadastros</b></h1><br>
+                    <fieldset id="material_field"><legend>Material</legend>
         
-    <title>Cadastro - Morpheus CI</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/material.js"></script>
-</head>
-<body>
-
-<div class="material_div">
-    <form id="material_form">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="material_field"><legend>Material</legend>
-
-                <label for="name">Material:</label> <input type="text" name="material_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
-                <label for="ncm">NCM:</label> <input type="text" name="ncm_name" id="ncm" size="20" maxlength="10" placeholder="Ex: 74040000"><br><br>
-                <label for="description">Descrição:</label> <input type="text" name="description_name" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_material()">
-
-            </fieldset>
-    </form>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <script type="text/javascript" src="/js/menu.js" defer></script>
-            <script src="/js/index.js" defer></script>
-            <script src="/js/jqueryCookies.js"></script>    
-
-    </body>
-    </html>
+                        <label for="name">Material:</label> <input type="text" name="material_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
+                        <label for="ncm">NCM:</label> <input type="text" name="ncm_name" id="ncm" size="20" maxlength="10" placeholder="Ex: 74040000"><br><br>
+                        <label for="description">Descrição:</label> <input type="text" name="description_name" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+                        <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_material()">
+        
+                    </fieldset>
+            </form>
+        </div>
+    {% endblock %}

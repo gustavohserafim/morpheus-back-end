@@ -130,10 +130,34 @@ def company_remove(company_id):
 def home():
     return CommercialInvoiceController.getHome()
 
+
 @app.route('/index')
 def index():
     return render_template("index.html")
+    
 
 @app.route('/login')
 def logar():
     return render_template("login.html")
+
+
+@app.route('/client')
+def client():
+    return render_template("client.html")
+
+
+@app.route('/adress')
+def adress():
+    return render_template("adress.html")
+
+
+@app.route('/material')
+def material():
+    return render_template("material.html")
+
+
+@app.route('/measurement')
+def measurement():
+    return render_template("measurement.html")
+
+    

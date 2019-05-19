@@ -1,53 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/>
-        
-        <meta charset="UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% extends "base.html" %}
+    {% block head %}
         <script src="/static/js/client.js"></script>
-        <title>Morpheus</title>
-    </head>
-    <body>
-      <div class="bg">
-        <nav class="barra">
-            <div class="nav-wrapper container">
-                <a href="/static/index.html" class="brand-logo right"><img width="55" height="55" src="/static/img/MORPHEUS logo.png"></a>
-                <a href="#" data-activates="menu-mobile" class="button-collapse">
-                    <i class="material-icons">menu</i>
-                </a>
-                <ul class="left hide-on-med-and-down">
-                    <li><a href="/static/index.html">Pagina Inicial</a></li>
-                    <li><a href="/static/client.html" target="view">Clientes</a></li>
-                    <li><a href="/static/adress.html" target="view">Endereço</a></li>
-                    <li><a href="/static/material.html" target="view">Materiais</a></li>
-                    <li><a href="/static/measurement.html" target="view">Medidas</a></li>
-                </ul>
-                <ul class="side-nav" id="menu-mobile">
-                    <center><img class="circle" width="150" height="150" src="/static/img/MORPHEUS logo.png"></center>
-                    <li><a href="/">Pagina Inicial</a></li>
-                    <li><a href="/static/client.html" target="view">Clientes</a></li>
-                    <li><a href="/static/adress.html" target="view">Endereço</a></li>
-                    <li><a href="/static/material.html" target="view">Materiais</a></li>
-                    <li><a href="/static/measurement.html" target="view">Medidas</a></li>
-                </ul>
-            </div>
-        </nav>
-        <iframe height="100%" width="100%" src="" name="view"></iframe> 
-<!-- 
-    <h1>Morpheus CI</h1>
-    <form action="">
-        
-    </form> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <script type="text/javascript" src="/static/js/menu.js" defer></script>
-            <script src="/static/js/index.js" defer></script>
-            <script src="/static/js/jqueryCookies.js"></script>    
-    </div>
-    </body>
-    </html>
+    {% endblock %}
+
+    {% block content %}
+    
+    {% endblock %}

@@ -1,58 +1,50 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta charset="UTF-8">
-    <title>Clientes - Morpheus CI</title>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="/js/index.js" defer="defer"></script>
-    <script src="/js/client.js" defer="defer"></script>
-    <script src="/js/jqueryCookies.js"></script>
+{% extends "base.html" %}
+    {% block head %}
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="/js/index.js" defer="defer"></script>
+        <script src="/js/client.js" defer="defer"></script>
+        <script src="/js/jqueryCookies.js"></script>
 
-</head>
-<body>
-<div>
-    <table id="clients" class="display" style="width:80%">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Fax</th>
-                <th>Contato</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>id</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>Fax</th>
-                <th>Contato</th>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-<button>Adicionar cliente</button>
-<div class="client_div" >
-    <form id="client_form">
-        <h1><b>Clientes</b></h1><br>
-        <fieldset id="client_field"><legend>Dados do cliente</legend>
+    {% endblock %}
 
-            <label for="name">Empresa:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
-            <label for="phone">Telefone:</label> <input type="text" name="phone" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-            <label for="fax">Fax:</label> <input type="text" name="fax" id="fax" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-            <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
-            <input type="button" class="btn btn-info" value="Cadastrar" id="client_button" onclick="send_client()">
+    {% block content %}
+        <div>
+            <table id="clients" class="display" style="width:80%">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Fax</th>
+                        <th>Contato</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Fax</th>
+                        <th>Contato</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <button>Adicionar cliente</button>
+        <div class="client_div" >
+            <form id="client_form">
+                <h1><b>Clientes</b></h1><br>
+                <fieldset id="client_field"><legend>Dados do cliente</legend>
+        
+                    <label for="name">Empresa:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
+                    <label for="phone">Telefone:</label> <input type="text" name="phone" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                    <label for="fax">Fax:</label> <input type="text" name="fax" id="fax" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                    <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
+                    <input type="button" class="btn btn-info" value="Cadastrar" id="client_button" onclick="send_client()">
+        
+                </fieldset>
+            </form>
+    </div>
+        
+    {% endblock %}
 
-        </fieldset>
-    </form>
-</div>
-
-</body>
-</html>

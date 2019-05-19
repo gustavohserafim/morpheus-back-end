@@ -1,51 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <!-- <link rel="stylesheet" type="text/css" href="/css/estilo.css" media="screen"/> -->
-        <style>
-        select{
-          display: flex;
-        }
-        </style>
-    <title>Cadastro - Morpheus CI</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/ci_item.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+    {% block head %}
+        <script src="/js/ci_item.js"></script>
+    {% endblock %}
 
-<div class="">
-    <form id="">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="send_ci"><legend>Lista de Produtos</legend>
-                <select action="/material.html" name="measurement_id" id="measurement_id" method="GET">
-                    <option value="#material_id"></option>
-                </select>
+    {% block content %}
+        <form id="">
+            <h1><b>Cadastros</b></h1><br>
+                <fieldset id="send_ci"><legend>Lista de Produtos</legend>
+                    <select action="/material.html" name="measurement_id" id="measurement_id" method="GET">
+                        <option value="#material_id"></option>
+                    </select>
 
-                <label for="description">Descrição:</label> <input type="text" name="description_name" id="material_id" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_ci()">
+                    <label for="description">Descrição:</label> <input type="text" name="description_name" id="material_id" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+                    <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_ci()">
 
-                <a href="#modal" class="btn orange modal-trigger">Material</a>
-                <div class="modal" id='modal'>
-                  
-                </div>
-            </fieldset>
-    </form>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <!-- <script type="text/javascript" src="/js/menu.js" defer></script> -->
-            <script src="/js/index.js" defer></script>
-            <script src="/js/jqueryCookies.js"></script>    
-      <!-- Mudar para o js modal -->
-      <script>
-      $(document).ready(function(){
-        $('.modal').modal();
-      });
-      </script>
-    </body>
-    </html>
+                    <a href="#modal" class="btn orange modal-trigger">Material</a>
+                    <div class="modal" id='modal'>
+                    
+                    </div>
+                </fieldset>
+        </form>
+    
+    {% endblock %}

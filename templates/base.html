@@ -1,48 +1,52 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/css/estilo.css" media="screen"/>
-        
+        <link rel="stylesheet" type="text/css" href="/static/css/estilo.css" media="screen"/>
+        {% block head %}
+        {% endblock %}
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="/js/client.js"></script>
-        <title>{% block title %}{% endblock %}</title>
+        
+        <title>Morpheus</title>
     </head>
     <body>
+      <div class="bg">
+        <nav class="barra">
+            <div class="nav-wrapper container">
+                <a href="/index" class="brand-logo right"><img width="55" height="55" src="/static/img/MORPHEUS logo.png"></a>
+                <a href="#" data-activates="menu-mobile" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="left hide-on-med-and-down">
+                    <li><a href="/index">Pagina Inicial</a></li>
+                    <li><a href="/client" target="view">Clientes</a></li>
+                    <li><a href="/adress" target="view">Endereço</a></li>
+                    <li><a href="/material" target="view">Materiais</a></li>
+                    <li><a href="/measurement" target="view">Medidas</a></li>
+                </ul>
+                <ul class="side-nav" id="menu-mobile">
+                    <center><img class="circle" width="150" height="150" src="/static/img/MORPHEUS logo.png"></center>
+                    <li><a href="/index">Pagina Inicial</a></li>
+                    <li><a href="/client" target="view">Clientes</a></li>
+                    <li><a href="/adress" target="view">Endereço</a></li>
+                    <li><a href="/material" target="view">Materiais</a></li>
+                    <li><a href="/measurement" target="view">Medidas</a></li>
+                </ul>
+            </div>
+        </nav>
 
+        {% block content %}
+        {% endblock %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-        <script type="text/javascript" src="/js/menu.js" defer></script>
-        <script src="/js/index.js" defer></script>
-        <script src="/js/jqueryCookies.js"></script>    
-<footer class="page-footer light-blue darken-4">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Morpheus</h5>
-          <p class="grey-text text-lighten-4">Outros</p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text"></h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#">Fale Conosco</a></li>
-            <li><a class="grey-text text-lighten-3" href="#">Trabalhe conosco</a></li>
-            <li><a class="grey-text text-lighten-3" href="#">SAC</a></li>
-          </ul>
-        </div>
-      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+            <script type="text/javascript" src="/static/js/menu.js" defer></script>
+            <script src="/static/js/index.js" defer></script>
+            <script src="/static/js/jqueryCookies.js"></script>    
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-      © 2019 Project Morpheus. Todos os Direitos reservados.
-      <a class="grey-text text-lighten-4 right" href="#!">Outros Links</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html> -->
+    </body>
+    </html>
