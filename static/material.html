@@ -4,22 +4,23 @@
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/css/estilo.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
         
     <title>Cadastro - Morpheus CI</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/measurement.js"></script>
+    <script src="/js/material.js"></script>
 </head>
 <body>
 
-<div class="measurement_div">
-    <form id="measurement_form">
+<div class="material_div">
+    <form id="material_form">
         <h1><b>Cadastros</b></h1><br>
-            <fieldset id="measurement_field"><legend>Embalagem</legend>
+            <fieldset id="material_field"><legend>Material</legend>
 
-                <label for="name">Embalagem:</label> <input type="text" name="measurement_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
-                <label for="description">Descrição:</label> <input type="text" name="description" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_measurement()">
+                <label for="name">Material:</label> <input type="text" name="material_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
+                <label for="ncm">NCM:</label> <input type="text" name="ncm_name" id="ncm" size="20" maxlength="10" placeholder="Ex: 74040000"><br><br>
+                <label for="description">Descrição:</label> <input type="text" name="description_name" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_material()">
 
             </fieldset>
     </form>
@@ -31,6 +32,6 @@
             <script type="text/javascript" src="/js/menu.js" defer></script>
             <script src="/js/index.js" defer></script>
             <script src="/js/jqueryCookies.js"></script>    
-    
+
     </body>
     </html>

@@ -19,7 +19,7 @@ function send_client() {
 function getClients() {
 
     $('#clients').DataTable( {
-        "ajax": "/client",
+        "ajax": "/api/client",
         "columns": [
             { "data": "id" },
             { "data": "name" },
@@ -29,34 +29,19 @@ function getClients() {
         ]
     } );
 
-    // $.ajax({
-    //     type: "GET",
-    //     url: "/client",
-    //     dataType: "json",
-    //     contentType: 'application/json',
-    //     statusCode: {
-    //         200: function (data) {
-    //             return data
-    //         }
-    //     }
-    // });
+}
 
+function formHide() {
+    var form = $('#client_form');
 
-
+    if (form.is(":visible")){
+        form.hide();
+    }else{
+        form.show();
+    }
 }
 
 $(document).ready(function () {
-
     getClients();
-
-
-
-    // var token = $.cookie('access_token_cookie');
-
-    // if (token !== undefined) {
-    //     window.location = '/static/index.html';
-    //
-    // }
-
 });
 

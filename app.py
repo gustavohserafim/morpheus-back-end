@@ -69,12 +69,13 @@ def client_all():
 def client_create():
     return ClientController.create(request.get_json())
 
-@app.route('/ci', methods=['GET'])
+
+@app.route('/api/ci', methods=['GET'])
 def ci_all():
     return CiController.all()
 
 
-@app.route('/ci', methods=['POST'])
+@app.route('/api/ci', methods=['POST'])
 def ci_create():
     return CiController.create(request.get_json())
 
@@ -129,11 +130,3 @@ def company_remove(company_id):
 # @jwt_required
 def home():
     return CommercialInvoiceController.getHome()
-
-@app.route('/index')
-def index():
-    return render_template("index.html")
-
-@app.route('/login')
-def logar():
-    return render_template("login.html")
