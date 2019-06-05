@@ -23,6 +23,7 @@ class DB:
         return data
 
     def insert(self, data, table):
+        con = self._conn
         cur = self._cur
         columns = []
         values = []
@@ -36,7 +37,7 @@ class DB:
         try:
             insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
             cur.execute(insert_query, values)
-            cur.connection.commit()
+            con.commit()
             return True
         except Exception as e:
             print(e)
@@ -61,8 +62,9 @@ class DB:
         try:
             sql = ''' UPDATE {} SET removed = 1 WHERE id = {};'''.format(table, id)
             cur = self._cur
+            con = self._conn
             cur.execute(sql)
-            cur.connection.commit()
+            con.commit()
             return True
         except Exception as e:
             print(e)
