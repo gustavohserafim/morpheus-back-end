@@ -16,5 +16,9 @@ class ClientModel:
         return DB().SelectById(client_id, ['id', 'name', 'phone', 'fax', 'contact'], 'client')
 
     @staticmethod
+    def update(client_id, params):
+        return DB().update(client_id, params, 'client')
+
+    @staticmethod
     def remove(client_id):
         return DB().remove(client_id, 'client')

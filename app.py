@@ -72,6 +72,18 @@ def client_create():
     return ClientController.create(request.get_json())
 
 
+@app.route('/api/client/<int:client_id>', methods=['GET', 'PUT', 'DELETE'])
+# @jwt_required
+def client_ud(client_id):
+    data = request.get_json()
+    if request.method == 'PUT':
+        return ClientController.update(client_id, data)
+    elif request.method == 'DELETE':
+        return ClientController.remove(client_id)
+    else:
+        return ClientController.get(client_id)
+
+
 @app.route('/api/ci', methods=['GET'])
 @jwt_required
 def ci_all():
