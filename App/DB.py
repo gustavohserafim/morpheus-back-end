@@ -85,30 +85,27 @@ class DB:
             return False
         return password
 
+    def update(self, id, params, table):
+
+        query = "UPDATE " + table + " SET "
+
+        for key in params:
+            if params[key] is None:
+                query = query + key + " = null, "
+            else:
+                query = query + key + " = '"+params[key]+"', ".format(key)
+        query = query[: -2]
+        query = query + "WHERE id = {} ;".format(id)
+
+        try:
+            cur = self._cur
+            con = self._conn
+            cur.execute(query)
+            con.commit()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
     def __del__(self):
         self._conn.close()
-
-    # @staticmethod
-    # def update(id, params, table):
-    #
-    #     columns = []
-    #     values = []
-    #
-    #     for i in data:
-    #         columns.append(i)
-    #         values.append(data[i])
-    #
-    #     query_placeholders = ', '.join(['%s'] * len(values))
-    #     query_columns = ', '.join(columns)
-    #     try:
-    #
-    #         db = app.mysql
-    #         insert_query = ''' INSERT INTO %s (%s) VALUES (%s) ;''' % (table, query_columns, query_placeholders)
-    #         cur = mysql.cursor()
-    #         cur.execute(insert_query, values)
-    #         mysql.connection.commit()
-    #         return True
-    #     except Exception as e:
-    #         print(e)
-    #         return False
-        # cur.execute('SELECT id FROM' + table + 'ORDER BY id DESC LIMIT 1;')
