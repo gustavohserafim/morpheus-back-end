@@ -1,7 +1,7 @@
 from flask import Flask, request
 from os import environ
 from flask_jwt_extended import (
-    JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity, unset_jwt_cookies
+    JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity
 )
 from Controller.AuthController import *
 from Controller.CompanyController import *
@@ -16,12 +16,8 @@ from Controller.CiController import *
 app = Flask(__name__)
 jwt = JWTManager(app)
 
-app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_COOKIE_SECURE'] = False  # Set to true in production
-app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
-app.config['JWT_REFRESH_COOKIE_PATH'] = '/token/refresh'
-app.config['JWT_COOKIE_CSRF_PROTECT'] = True
 app.config['JWT_SECRET_KEY'] = environ['SECRET_KEY']
+app.config['JWT_HEADER_TYPE'] = ''
 
 
 @app.route('/user', methods=['POST'])
@@ -30,22 +26,20 @@ def adm_user_create():
     return UserController.create(request.get_json())
 
 # Routes
-@app.route('/token/auth', methods=['POST'])
+@app.route('/api/auth', methods=['POST'])
 def login():
     return AuthController.login(request.get_json())
 
 
-@app.route('/token/refresh', methods=['POST'])
-@jwt_refresh_token_required
-def refresh():
-    return AuthController.refresh_token(get_jwt_identity())
+@app.route('/api/auth/dev', methods=['POST'])
+def login_dev():
+    return AuthController.login_dev(request.get_json())
 
 
-@app.route('/token/remove', methods=['DELETE'])
+@app.route('/api/auth', methods=['DELETE'])
+@jwt_required
 def logout():
-    resp = jsonify({'logout': True})
-    unset_jwt_cookies(resp)
-    return resp, 200
+    return AuthController.logout()
 
 
 @app.route('/api/company', methods=['GET'])

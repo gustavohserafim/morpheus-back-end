@@ -1,27 +1,42 @@
 from flask import jsonify
 from Model.AuthModel import *
-from flask_jwt_extended import set_access_cookies, set_refresh_cookies
+from flask_jwt_extended import set_access_cookies, set_refresh_cookies, unset_jwt_cookies
 
 
 class AuthController:
 
     @staticmethod
     def login(request):
-        login = AuthModel.login(request['email'], request['password'])
-        if login is False:
+
+        if 'email' not in request or 'password' not in request:
+            return jsonify({'result': 'error', 'message': 'Missing fields.'}), 400
+
+        token = AuthModel.login(request['email'], request['password'])
+        if token is False:
             return jsonify({'result': 'error', 'message': 'Email or password incorrect.'}), 401
 
-        resp = jsonify({'result': 'ok', 'message': 'Login ok', 'data': {'token': login['access_token']} })
-        set_access_cookies(resp, login['access_token'])
-        set_refresh_cookies(resp, login['refresh_token'])
+        resp = jsonify({'result': 'ok', 'message': 'Login ok', 'data': {'token': token}})
+
         return resp, 200
 
     @staticmethod
-    def refresh_token(jwt_identity):
-        access_token = create_access_token(identity=jwt_identity)
-        resp = jsonify({'result': 'ok', 'message': 'Refresh ok'})
-        set_access_cookies(resp, access_token)
+    def login_dev(request):
+
+        if 'email' not in request or 'password' not in request:
+            return jsonify({'result': 'error', 'message': 'Missing fields.'}), 400
+
+        token = AuthModel.login_dev(request['email'], request['password'])
+        if token is False:
+            return jsonify({'result': 'error', 'message': 'Email or password incorrect.'}), 401
+
+        resp = jsonify({'result': 'ok', 'message': 'Login ok', 'data': {'token': token}})
+
         return resp, 200
 
-    # @staticmethod
-    # def logout():
+
+
+    @staticmethod
+    def logout():
+        resp = jsonify({'logout': True})
+        unset_jwt_cookies(resp)
+        return resp, 200

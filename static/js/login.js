@@ -13,13 +13,11 @@ function login() {
         data: data,
         statusCode: {
             200: function (data) {
-                var token = data['data']['token'];
-
-                $.cookie('access_token_cookie', token);
+                localStorage.auth_token = data['data']['token'];
 
                 $.ajaxSetup({
                     headers: {
-                        'Authorization': $.cookie('access_token_cookie')
+                        'Authorization': localStorage.auth_token
                     }
                 });
 
@@ -34,7 +32,7 @@ function login() {
 $(document).ready(function () {
     $('#login_error').hide();
 
-    var token = $.cookie('access_token_cookie');
+    var token = localStorage.auth_token;
 
     if (token !== undefined) {
         window.location = '/index.html';
