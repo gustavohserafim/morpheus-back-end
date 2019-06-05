@@ -7,7 +7,7 @@ function send_ci() {
 
     $.ajax({
         type: "POST",
-        url: "/ci",
+        url: "/api/ci",
         dataType: "json",
         contentType: 'application/json',
         data: data,

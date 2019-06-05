@@ -8,7 +8,7 @@ function send_client() {
 
     $.ajax({
         type: "POST",
-        url: "/client",
+        url: "/api/client",
         dataType: "json",
         contentType: 'application/json',
         data: data,
@@ -42,6 +42,7 @@ function formHide() {
 }
 
 $(document).ready(function () {
+    $('#client_form').hide();
     getClients();
 });
 

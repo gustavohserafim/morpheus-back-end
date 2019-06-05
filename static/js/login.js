@@ -23,7 +23,7 @@ function login() {
                     }
                 });
 
-                window.location = '/index';
+                window.location = '/index.html';
             },
             401: $('#login_error').show(),
         }
@@ -37,7 +37,7 @@ $(document).ready(function () {
     var token = $.cookie('access_token_cookie');
 
     if (token !== undefined) {
-        window.location = '/index';
+        window.location = '/index.html';
     }
 
 });
