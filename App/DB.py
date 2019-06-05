@@ -82,7 +82,7 @@ class DB:
         sql = '''SELECT password FROM user WHERE email = '{}';'''.format(email)
         cur.execute(sql)
         password = cur.fetchone()
-        print(password)
+
         if password is None:
             return False
         return password
