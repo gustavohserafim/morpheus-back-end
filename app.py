@@ -126,6 +126,13 @@ def measurement_create():
     return MeasurementController.create(request.get_json())
 
 
+@app.route('/api/measurement/<int:measurement_id>', methods=['PUT'])
+@jwt_required
+def measurement_create(measurement_id):
+    data = request.get_json()
+    return MeasurementController.update(measurement_id, data)
+
+
 @app.route('/api/company/<int:company_id>', methods=['GET'])
 @jwt_required
 def company_get(company_id):

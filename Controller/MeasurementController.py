@@ -17,6 +17,14 @@ class MeasurementController:
         return jsonify({'result': 'ok', 'code': 200})
 
     @staticmethod
+    def update(measurement_id, data):
+        result = MeasurementModel.update(measurement_id, data)
+
+        if result is False:
+            return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
+        return jsonify({'result': 'ok', 'code': 200})
+
+    @staticmethod
     def get(measurement_id):
         return jsonify({'result': 'ok', 'data': MeasurementModel.get(measurement_id)}), 200
 
