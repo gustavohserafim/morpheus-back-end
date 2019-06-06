@@ -128,7 +128,7 @@ def measurement_create():
 
 @app.route('/api/measurement/<int:measurement_id>', methods=['PUT'])
 @jwt_required
-def measurement_create(measurement_id):
+def measurement_update(measurement_id):
     data = request.get_json()
     return MeasurementController.update(measurement_id, data)
 
