@@ -114,7 +114,7 @@ def material_create():
     return MaterialController.create(request.get_json())
 
 
-@app.route('/api/material<int:material_id>', methods=['PUT'])
+@app.route('/api/material/<int:material_id>', methods=['PUT'])
 @jwt_required
 def material_update(material_id):
     return MaterialController.update(material_id, request.get_json())
