@@ -6,11 +6,10 @@ class MaterialController:
 
     @staticmethod
     def all():
-        return jsonify(MaterialModel.all())
+        return jsonify({'data': MaterialModel.all()})
 
     @staticmethod
     def create(data):
-        print(data)
         result = MaterialModel.create(data)
 
         if result is False:
