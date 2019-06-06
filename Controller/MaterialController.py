@@ -16,6 +16,13 @@ class MaterialController:
             return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
         return jsonify({'result': 'ok', 'code': 200})
 
+    @staticmethod
+    def update(material_id, data):
+        result = MaterialModel.update(material_id, data)
+
+        if result is False:
+            return jsonify({'error': True, 'message': 'failed to update', 'code': 400})
+        return jsonify({'result': 'ok', 'code': 200})
     
     @staticmethod
     def get(material_id):
