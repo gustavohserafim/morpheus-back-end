@@ -1,36 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
-        
-    <title>Cadastro - Morpheus CI</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/measurement.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+    <script src="/js/util.js"></script>
+    <script src="/js/measurement.js" defer="defer"></script>
+    <title>Clientes - Morpheus CI</title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico"/>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Morpheus</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">CI</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/client.html">Clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/material.html">Materiais</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/measurement.html">Embalagem<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="/img/logo.png" width="30" height="30" alt="">
+        </a>
+    </nav>
+</nav>
 
-<div class="measurement_div">
-    <form id="measurement_form">
-        <h1><b>Cadastros</b></h1><br>
-            <fieldset id="measurement_field"><legend>Embalagem</legend>
+<div class="panel panel-default">
+  <div class="panel-heading"><b> <h1>Embalagem</h1> </b> </div>
 
-                <label for="name">Embalagem:</label> <input type="text" name="measurement_name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
+  <div class="panel-body">
+
+	<div class="tbl_user_data">Carregando...</div>
+
+  </div>
+
+</div>
+
+<button onclick="formHide();" class="btn btn-info" id="client_add_btn" >Adicionar embalagem</button>
+<br>
+<div class="alert alert-success" role="alert" id="created_message">
+    Embalagem cadastrada com sucesso.
+</div>
+<br>
+<div class="form_div">
+    <form id="form">
+        <h1><b>Adicionar embalagem</b></h1><br>
+        <fieldset id="material_field"><legend>Dados da embalagem</legend>
+
+                <label for="name">Embalagem:</label> <input type="text" name="measurement" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
                 <label for="description">Descrição:</label> <input type="text" name="description" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
                 <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_measurement()">
 
-            </fieldset>
+        </fieldset>
+        <br>
     </form>
+    <br>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-            <script type="text/javascript" src="/js/menu.js" defer></script>
-            <script src="/js/index.js" defer></script>
-            <script src="/js/jqueryCookies.js"></script>    
-    
-    </body>
-    </html>
+<br>
+</body>
+</html>
