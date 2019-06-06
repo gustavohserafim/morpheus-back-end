@@ -6,7 +6,7 @@ class MeasurementController:
 
     @staticmethod
     def all():
-        return jsonify(MeasurementModel.all())
+        return jsonify({'data': MeasurementModel.all()})
 
     @staticmethod
     def create(data):
@@ -15,11 +15,12 @@ class MeasurementController:
         if result is False:
             return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
         return jsonify({'result': 'ok', 'code': 200})
+
     @staticmethod
-    def get(company_id):
+    def get(measurement_id):
         return jsonify({'result': 'ok', 'data': MeasurementModel.get(measurement_id)}), 200
 
     @staticmethod
-    def remove(company_id):
+    def remove(measurement_id):
         MeasurementModel.remove(measurement_id)
         return jsonify({'result': 'ok'}), 200
