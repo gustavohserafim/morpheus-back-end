@@ -7,7 +7,7 @@ function login() {
 
     $.ajax({
         type: "POST",
-        url: "/token/auth",
+        url: "/api/auth",
         dataType: "json",
         contentType: 'application/json',
         data: data,
@@ -24,7 +24,7 @@ function login() {
                 window.location = '/index.html';
             },
             401: $('#login_error').show(),
-        }
+        } // return console log
     });
 
 }

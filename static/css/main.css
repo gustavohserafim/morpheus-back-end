@@ -1,0 +1,9 @@
+.panel, .panel-default, .form_div {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#client_add_btn{
+    position: relative;
+    left: 15px;
+}

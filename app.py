@@ -1,7 +1,7 @@
 from flask import Flask, request
 from os import environ
 from flask_jwt_extended import (
-    JWTManager, jwt_required, jwt_refresh_token_required, get_jwt_identity
+    JWTManager, jwt_required
 )
 from Controller.AuthController import *
 from Controller.CompanyController import *
