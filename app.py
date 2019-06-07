@@ -20,13 +20,13 @@ jwt = JWTManager(app)
 app.config['JWT_SECRET_KEY'] = environ['SECRET_KEY']
 app.config['JWT_HEADER_TYPE'] = ''
 
-
+# Routes
 @app.route('/user', methods=['POST'])
 @jwt_required
 def adm_user_create():
     return UserController.create(request.get_json())
 
-# Routes
+
 @app.route('/api/auth', methods=['POST'])
 def login():
     return AuthController.login(request.get_json())
@@ -162,9 +162,3 @@ def home():
 @jwt_required
 def get_transport():
     return TransportController.all()
-
-
-@app.route('/api/ci', methods=['POST'])
-@jwt_required
-def create_ci():
-    return CommercialInvoiceController.create(request.get_json())
