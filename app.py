@@ -12,6 +12,7 @@ from Controller.ClientController import *
 from Controller.AddressController import *
 from Controller.CommercialInvoiceController import *
 from Controller.CiController import *
+from Controller.TransportController import *
 
 app = Flask(__name__)
 jwt = JWTManager(app)
@@ -155,3 +156,9 @@ def company_remove(company_id):
 @jwt_required
 def home():
     return CommercialInvoiceController.getHome()
+
+
+@app.route('/api/transport', methods=['GET'])
+@jwt_required
+def get_transport():
+    return TransportController.all()
