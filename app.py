@@ -11,8 +11,8 @@ from Controller.MaterialController import *
 from Controller.ClientController import *
 from Controller.AddressController import *
 from Controller.CommercialInvoiceController import *
-from Controller.CiController import *
 from Controller.TransportController import *
+from Controller.Ci_itemController import *
 
 app = Flask(__name__)
 jwt = JWTManager(app)
@@ -82,7 +82,7 @@ def client_ud(client_id):
 @app.route('/api/ci', methods=['GET'])
 @jwt_required
 def ci_all():
-    return CiController.all()
+    return CommercialInvoiceController.all()
 
 
 @app.route('/api/ci', methods=['POST'])
@@ -162,3 +162,9 @@ def home():
 @jwt_required
 def get_transport():
     return TransportController.all()
+
+
+@app.route('/api/ci_item', methods=['POST'])
+@jwt_required
+def ci_item_create():
+    return Ci_itemController.create(request.get_json())
