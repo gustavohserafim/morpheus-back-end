@@ -9,7 +9,13 @@ class MaterialModel:
 
     @staticmethod
     def create(data):
-        return DB().insert(data, 'material')
+        created_ids = []
+        for i in data:
+            if DB().insert(i, 'material') is False:
+                return False
+            created_ids.append(DB().selectFV("SELECT MAX(id) as id FROM material;"))
+
+        return created_ids
 
     @staticmethod
     def update(material_id, data):
