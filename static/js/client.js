@@ -287,13 +287,6 @@ function formHide() {
     }
 }
 
-$(document).ready(function () {
-    $('#created_message').hide();
-    $('#form').hide();
-
-    getClients();
-});
-
 function getStylesheet() {
       var currentTime = new Date().getHours();
       if (0 <= currentTime&&currentTime < 5) {
@@ -313,5 +306,13 @@ function getStylesheet() {
       }
 }
 
-getStylesheet();
+$(document).ready(function () {
+    $('#created_message').hide();
+    $('#form').hide();
+
+    getClients();
+    getStylesheet();
+});
+
+
 
