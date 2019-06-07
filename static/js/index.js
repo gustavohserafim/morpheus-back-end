@@ -15,19 +15,16 @@ function getCI(ci_id) {
         headers: { 'Authorization': localStorage.auth_token },
         success: function (response) {
 
-            var tbl = '<p>Client: '+ response['data']['client_name']+'</p>';
-            tbl+= '<p>Created at: '+ response['data']['created_at']+'</p>';
-            tbl+= '<p>CI code: '+ response['data']['id']+'</p><br>';
-            tbl+= '<p>Transport: '+ response['data']['transport']['name']+'</p><br>';
-            tbl+= '<p>Transport type: '+ response['data']['transport']['type']+'</p><br>';
-
+            var tbl = '<p><strong>CI code:</strong> '+ response['data']['id']+'</p>';
+            tbl+= '<p><strong>Client:</strong> '+ response['data']['client_name']+'</p>';
+            tbl+= '<p><strong>Created at:</strong> '+ response['data']['created_at']+'</p>';
+            tbl+= '<p><strong>Transport:</strong> '+ response['data']['transport']['name']+'</p>';
+            tbl+= '<p><strong>Transport type:</strong> '+ response['data']['transport']['type']+'</p><br>';
 
             response = response['data']['materials'];
 
             //--->create data table > start
-
             tbl +='<table class="table table-hover">';
-
             //--->create table header > start
             tbl +='<thead>';
             tbl +='<tr>';
@@ -41,7 +38,6 @@ function getCI(ci_id) {
             tbl +='</tr>';
             tbl +='</thead>';
             //--->create table header > end
-
 
             //--->create table body > start
             tbl +='<tbody>';
