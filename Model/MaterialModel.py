@@ -12,6 +12,10 @@ class MaterialModel:
         return DB().insert(data, 'material')
 
     @staticmethod
+    def update(material_id, data):
+        return DB().update(material_id, data, 'material')
+
+    @staticmethod
     def get(material_id):
         return DB().SelectById(material_id, ['id', 'ncm', 'name', 'description'], 'material')
 

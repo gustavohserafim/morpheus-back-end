@@ -114,6 +114,12 @@ def material_create():
     return MaterialController.create(request.get_json())
 
 
+@app.route('/api/material/<int:material_id>', methods=['PUT'])
+@jwt_required
+def material_update(material_id):
+    return MaterialController.update(material_id, request.get_json())
+
+
 @app.route('/api/measurement', methods=['GET'])
 @jwt_required
 def measurement_all():
@@ -124,6 +130,13 @@ def measurement_all():
 @jwt_required
 def measurement_create():
     return MeasurementController.create(request.get_json())
+
+
+@app.route('/api/measurement/<int:measurement_id>', methods=['PUT'])
+@jwt_required
+def measurement_update(measurement_id):
+    data = request.get_json()
+    return MeasurementController.update(measurement_id, data)
 
 
 @app.route('/api/company/<int:company_id>', methods=['GET'])

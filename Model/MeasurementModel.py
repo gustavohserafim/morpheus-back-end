@@ -12,6 +12,10 @@ class MeasurementModel:
         return DB().insert(data, 'measurement_unit')
 
     @staticmethod
+    def update(measurement_id, data):
+        return DB().update(measurement_id, data, 'measurement_unit')
+
+    @staticmethod
     def get(measurement_id):
         return DB().SelectById(measurement_id, ['id', 'name', 'description'], 'measurement_unit')
 
