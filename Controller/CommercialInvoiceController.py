@@ -1,12 +1,16 @@
 from flask import jsonify
 from Model.CommercialInvoiceModel import *
 
-class CommercialInvoiceController:
 
+class CommercialInvoiceController:
 
     @staticmethod
     def getHome():
-        return jsonify(CommercialInvoiceModel.getHome())
+        homes = CommercialInvoiceModel.getHome()
+
+        for k, v in enumerate(homes):
+            homes[k]['created_at'] = homes[k]['created_at'].strftime("%Y-%m-%d")
+        return jsonify(homes)
     
     @staticmethod
     def all():
