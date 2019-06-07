@@ -162,3 +162,9 @@ def home():
 @jwt_required
 def get_transport():
     return TransportController.all()
+
+
+@app.route('/api/ci', methods=['POST'])
+@jwt_required
+def create_ci():
+    return CommercialInvoiceController.create(request.get_json())
