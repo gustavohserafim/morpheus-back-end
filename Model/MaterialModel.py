@@ -5,7 +5,7 @@ class MaterialModel:
 
     @staticmethod
     def all():
-        return DB().selectAll(['id', 'ncm', 'name', 'description'], 'material')
+        return DB().selectAll(['id', 'ncm', 'name'], 'material')
 
     @staticmethod
     def create(data):
