@@ -8,7 +8,7 @@ class AuthController:
     @staticmethod
     def login(request):
 
-        if 'email' not in request or 'password' not in request:
+        if 'email' not in request or 'password' not in request or len(request['email']) < 1 or len(request['password']) < 1:
             return jsonify({'result': 'error', 'message': 'Missing fields.'}), 400
 
         token = AuthModel.login(request['email'], request['password'])

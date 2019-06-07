@@ -23,7 +23,7 @@ function login() {
 
                 window.location = '/index.html';
             },
-            401: $('#login_error').show(),
+            401: $('#login_error').show()
         } // return console log
     });
 
