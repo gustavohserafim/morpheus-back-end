@@ -13,7 +13,9 @@ class CommercialInvoiceModel:
 
     @staticmethod
     def create(data):
-        return DB().insert(data, 'commercial_invoice')
+        if DB().insert(data, 'commercial_invoice') is False:
+            return False
+        return DB().selectFV("SELECT MAX(id) as id FROM commercial_invoice;")
 
     @staticmethod
     def get(ci_id):

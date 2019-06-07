@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="/js/util.js"></script>
-    <script src="/js/index.js"></script>
+    <script src="/js/new_ci.js" defer="defer"></script>
     <title>Morpheus CI</title>
     <link rel="shortcut icon" type="image/png" href="/img/favicon.ico"/>
 </head>
@@ -41,20 +41,34 @@
     </nav>
 </nav>
 <br>
-<br>
-
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading"><b> <h1>Commercial Invoices</h1> </b> </div><br>
-        <a href="/new_ci.html" class="btn btn-primary">Nova CI</a>
-        <br><br>
-        <div class="panel-body">
-
-            <div class="tbl_user_data">Carregando...</div>
-
+<div class="container-fluid">
+    <h1>Cadastrar CI</h1>
+    <br>
+    <form>
+        <div class="form-group">
+            <label>Cliente: <select class="form-control" name="client" id="client"></select></label>
+        </div>
+        <div class="form-group">
+            <label>Transport: <select class="form-control" name="transport" id="transport"></select></label>
         </div>
 
-    </div>
+        <p>Materials</p>
+        <button type="submit" class="btn btn-secondary" id="addItem">Adicionar item</button><br><br>
+
+        <label for="amount[0]"><input type="number" class="form-control" name="amount[0]" placeholder="1" min="1" required="required"></label>
+        <label for="unit[0]"><input type="text" class="form-control" name="unit[0]" placeholder="Big Bags" required="required"></label>
+        <label for="name[0]"><input type="text" class="form-control" name="name[0]" placeholder="Brass Scrap Honey" required="required"></label>
+        <label for="weight_unit[0]"><input type="number" class="form-control" name="weight_unit[0]" step="any" min="1" placeholder="1.0" required="required"></label>
+        <label for="net_weight[0]"><input type="number" class="form-control" name="net_weight[0]" step="any" min="1" placeholder="25.0" required="required"></label>
+        <label for="ncm[0]"><input type="number" class="form-control" name="ncm[0]" placeholder="7281" minlength="4" maxlength="8" required="required"></label>
+        <label for="value[0]"><input type="number" class="form-control" name="value[0]" placeholder="4.53" min="1" required="required"></label>
+
+    </form>
+
+
+    <br><br>
+    <input type="submit" class="btn btn-primary" onclick="create_ci();">
+
 </div>
 
 </body>

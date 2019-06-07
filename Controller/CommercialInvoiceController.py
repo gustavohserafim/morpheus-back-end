@@ -22,7 +22,7 @@ class CommercialInvoiceController:
 
         if result is False:
             return jsonify({'error': True, 'message': 'failed to insert'}), 400
-        return jsonify({'result': 'ok', 'code': 200})
+        return jsonify({'result': 'ok', 'created_id': result['id']}), 200
 
     @staticmethod
     def get(id):
