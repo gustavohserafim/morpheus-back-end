@@ -10,7 +10,7 @@ class CommercialInvoiceController:
 
         for k, v in enumerate(homes):
             homes[k]['created_at'] = homes[k]['created_at'].strftime("%Y-%m-%d")
-        return jsonify(homes)
+        return jsonify({'data': homes}), 200
     
     @staticmethod
     def all():
