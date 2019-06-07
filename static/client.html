@@ -29,9 +29,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/material.html">Materiais</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/measurement.html">Embalagem</a>
-            </li>
+
         </ul>
     </div>
     <nav class="navbar navbar-light bg-light">
@@ -42,13 +40,13 @@
 </nav>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><b> <h1>Clientes</h1> </b> </div>
+    <div class="panel-heading"><b> <h1>Clientes</h1> </b> </div>
 
-  <div class="panel-body">
+    <div class="panel-body">
 
-	<div class="tbl_user_data">Carregando...</div>
+        <div class="tbl_user_data">Carregando...</div>
 
-  </div>
+    </div>
 
 </div>
 
@@ -58,23 +56,24 @@
     Cliente cadastrado com sucesso.
 </div>
 <br>
-<div class="form_div">
-    <form id="form">
-        <h1><b>Adicionar cliente</b></h1><br>
-        <fieldset id="client_field"><legend>Dados do cliente</legend>
+<div class="container">
+    <div class="form_div">
+        <form id="form">
+            <h1><b>Adicionar cliente</b></h1><br>
+            <fieldset id="client_field"><legend>Dados do cliente</legend>
 
-            <label for="name">Empresa:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
-            <label for="phone">Telefone:</label> <input type="text" name="phone" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-            <label for="fax">Fax:</label> <input type="text" name="fax" id="fax" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
-            <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
-            <input type="button" id="client_create_btn" class="btn btn-primary" value="Cadastrar" onclick="send_client()">
+                <label for="name">Empresa:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Thanos Metals"><br><br>
+                <label for="phone">Telefone:</label> <input type="text" name="phone" id="phone" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                <label for="fax">Fax:</label> <input type="text" name="fax" id="fax" size="20" maxlength="255" placeholder="Ex: (305) 961-1690"><br><br>
+                <label for="contact">Contato:</label> <input type="text" name="contact_name" id="contact" size="20" maxlength="255" placeholder="Ex: Carl"><br><br>
+                <input type="button" id="client_create_btn" class="btn btn-primary" value="Cadastrar" onclick="send_client()">
 
-        </fieldset>
+            </fieldset>
+            <br>
+        </form>
         <br>
-    </form>
-    <br>
+    </div>
 </div>
-
 <br>
 </body>
 </html>

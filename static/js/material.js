@@ -44,7 +44,6 @@ function table(response) {
                 tbl +='<tr>';
                 tbl +='<th>Nome</th>';
                 tbl +='<th>NCM</th>';
-                tbl +='<th>Descricao</th>';
                 tbl +='<th>Editar</th>';
                 tbl +='</tr>';
                 tbl +='</thead>';
@@ -62,7 +61,6 @@ function table(response) {
                     tbl +='<tr row_id="'+row_id+'">';
                     tbl +='<td ><div class="row_data" edit_type="click" col_name="name">'+val['name']+'</div></td>';
                     tbl +='<td ><div class="row_data" edit_type="click" col_name="ncm">'+val['ncm']+'</div></td>';
-                    tbl +='<td ><div class="row_data" edit_type="click" col_name="description">'+val['description']+'</div></td>';
 
                     //--->edit options > start
                     tbl +='<td>';

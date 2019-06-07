@@ -1,225 +1,156 @@
+function printCi() {
+    $('#new_ci_btn').hide();
+    $('#ci_print_btn').hide()
+
+    window.print();
+}
+
+function getCI(ci_id) {
+
+    $.ajax({
+        type: "GET",
+        url: "/api/ci/"+ci_id,
+        dataType: "json",
+        contentType: 'application/json',
+        headers: { 'Authorization': localStorage.auth_token },
+        success: function (response) {
+
+            var tbl = '<p>Client: '+ response['data']['client_name']+'</p>';
+            tbl+= '<p>Created at: '+ response['data']['created_at']+'</p>';
+            tbl+= '<p>CI code: '+ response['data']['id']+'</p><br>';
+            tbl+= '<p>Transport: '+ response['data']['transport']['name']+'</p><br>';
+            tbl+= '<p>Transport type: '+ response['data']['transport']['type']+'</p><br>';
+
+
+            response = response['data']['materials'];
+
+            //--->create data table > start
+
+            tbl +='<table class="table table-hover">';
+
+            //--->create table header > start
+            tbl +='<thead>';
+            tbl +='<tr>';
+            tbl +='<th>Amount</th>';
+            tbl +='<th>Unit</th>';
+            tbl +='<th>Description</th>';
+            tbl +='<th>Weight Unit</th>';
+            tbl +='<th>Net Weight</th>';
+            tbl +='<th>NCM</th>';
+            tbl +='<th>Value (USD)</th>';
+            tbl +='</tr>';
+            tbl +='</thead>';
+            //--->create table header > end
+
+
+            //--->create table body > start
+            tbl +='<tbody>';
+
+            //--->create table body rows > start
+            $.each(response, function(index, val)
+            {
+                var row_id = val['id'];
+                //loop through ajax row data
+                tbl +='<tr row_id="'+row_id+'">';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="amount">'+val['amount']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="amount">'+val['unit']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="client">'+val['name']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['weight_unit']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['net_weight']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['ncm']+'</div></td>';
+                tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['value']+'</div></td>';
+
+                tbl +='</tr>';
+            });
+
+            //--->create table body rows > end
+
+            tbl +='</tbody>';
+            //--->create table body > end
+
+            tbl +='</table>';
+            tbl +='<br><button onclick="printCi();" class="btn btn-info" id="ci_print_btn" >Imprimir</button>';
+            //--->create data table > end
+
+            //out put table data
+            $(document).find('.tbl_user_data').html(tbl);
+
+        }
+
+    });
+}
+
 function table(response) {
 
     //--->create data table > start
-                var tbl = '';
-                tbl +='<table class="table table-hover">';
+    var tbl = '';
+    tbl +='<table class="table table-hover">';
 
-                //--->create table header > start
-                tbl +='<thead>';
-                tbl +='<tr>';
-                tbl +='<th>Cod. da CI</th>';
-                tbl +='<th>Cliente</th>';
-                tbl +='<th>Data de criação</th>';
-                tbl +='<th>Editar</th>';
-                tbl +='</tr>';
-                tbl +='</thead>';
-                //--->create table header > end
-
-
-                //--->create table body > start
-                tbl +='<tbody>';
-
-                //--->create table body rows > start
-                $.each(response, function(index, val)
-                {
-                    var row_id = val['id'];
-                    //loop through ajax row data
-                    tbl +='<tr row_id="'+row_id+'">';
-                    tbl +='<td ><div class="row_data" edit_type="click" col_name="ci_id">'+row_id+'</div></td>';
-                    tbl +='<td ><div class="row_data" edit_type="click" col_name="client">'+val['client_name']+'</div></td>';
-                    tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['created_at']+'</div></td>';
+    //--->create table header > start
+    tbl +='<thead>';
+    tbl +='<tr>';
+    tbl +='<th>Cod. da CI</th>';
+    tbl +='<th>Cliente</th>';
+    tbl +='<th>Data de criação</th>';
+    tbl +='<th>Visualizar</th>';
+    tbl +='</tr>';
+    tbl +='</thead>';
+    //--->create table header > end
 
 
-                    //--->edit options > start
-                    tbl +='<td>';
+    //--->create table body > start
+    tbl +='<tbody>';
 
-                    tbl +='<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'+row_id+'" > Editar</a> </span>';
-
-                    //only show this button if edit button is clicked
-                    tbl +='<span class="btn_save"> <a href="#" class="btn btn-link"  row_id="'+row_id+'"> Save</a> | </span>';
-                    tbl +='<span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="'+row_id+'"> Cancel</a> | </span>';
-
-                    tbl +='</td>';
-                    //--->edit options > end
-
-                    tbl +='</tr>';
-                });
-
-                //--->create table body rows > end
-
-                tbl +='</tbody>';
-                //--->create table body > end
-
-                tbl +='</table>';
-                //--->create data table > end
-
-                //out put table data
-                $(document).find('.tbl_user_data').html(tbl);
-
-                $(document).find('.btn_save').hide();
-                $(document).find('.btn_cancel').hide();
+    //--->create table body rows > start
+    $.each(response, function(index, val)
+    {
+        var row_id = val['id'];
+        //loop through ajax row data
+        tbl +='<tr row_id="'+row_id+'">';
+        tbl +='<td ><div class="row_data" edit_type="click" col_name="ci_id">'+row_id+'</div></td>';
+        tbl +='<td ><div class="row_data" edit_type="click" col_name="client">'+val['client_name']+'</div></td>';
+        tbl +='<td ><div class="row_data" edit_type="click" col_name="created_at">'+val['created_at']+'</div></td>';
 
 
-                //--->make div editable > start
-                $(document).on('click', '.row_data', function(event)
-                {
-                    event.preventDefault();
+        //--->edit options > start
+        tbl +='<td>';
 
-                    if($(this).attr('edit_type') == 'button')
-                    {
-                        return false;
-                    }
-
-                    //make div editable
-                    $(this).closest('div').attr('contenteditable', 'true');
-                    //add bg css
-                    $(this).addClass('bg-warning').css('padding','5px');
-
-                    $(this).focus();
-                });
-                //--->make div editable > end
+        tbl +='<span class="btn_edit" > <a href="#" class="btn btn-link " row_id="'+row_id+'" > Abrir</a> </span>';
 
 
-                //--->save single field data > start
-                $(document).on('focusout', '.row_data', function(event)
-                {
-                    event.preventDefault();
+        tbl +='</td>';
+        //--->edit options > end
 
-                    if($(this).attr('edit_type') == 'button')
-                    {
-                        return false;
-                    }
+        tbl +='</tr>';
+    });
 
-                    var row_id = $(this).closest('tr').attr('row_id');
+    //--->create table body rows > end
 
-                    var row_div = $(this)
-                        .removeClass('bg-warning') //add bg css
-                        .css('padding','')
+    tbl +='</tbody>';
+    //--->create table body > end
 
-                    var col_name = row_div.attr('name');
-                    var col_val = row_div.html();
+    tbl +='</table>';
+    //--->create data table > end
 
-                    var arr = {};
-                    arr[col_name] = col_val;
-
-                    //use the "arr"	object for your ajax call
-                    $.extend(arr, {row_id:row_id});
-
-                    //out put to show
-                    $('.post_msg').html( '<pre class="bg-success">'+JSON.stringify(arr, null, 2) +'</pre>');
-
-                });
-                //--->save single field data > end
+    //out put table data
+    $(document).find('.tbl_user_data').html(tbl);
 
 
-                //--->button > edit > start
-                $(document).on('click', '.btn_edit', function(event)
-                {
-                    event.preventDefault();
-                    var tbl_row = $(this).closest('tr');
+    //--->button > print > start
+    $(document).on('click', '.btn_edit', function(event)
+    {
+        event.preventDefault();
+        var tbl_row = $(this).closest('tr');
 
-                    var row_id = tbl_row.attr('row_id');
+        var row_id = tbl_row.attr('row_id');
 
-                    tbl_row.find('.btn_save').show();
-                    tbl_row.find('.btn_cancel').show();
+        getCI(row_id);
 
-                    //hide edit button
-                    tbl_row.find('.btn_edit').hide();
-
-                    //make the whole row editable
-                    tbl_row.find('.row_data')
-                        .attr('contenteditable', 'true')
-                        .attr('edit_type', 'button')
-                        .addClass('bg-warning')
-                        .css('padding','3px')
-
-                    //--->add the original entry > start
-                    tbl_row.find('.row_data').each(function(index, val)
-                    {
-                        //this will help in case user decided to click on cancel button
-                        $(this).attr('original_entry', $(this).html());
-                    });
-                    //--->add the original entry > end
-
-                });
-                //--->button > edit > end
+    });
+    //--->button > print > end
 
 
-                //--->button > cancel > start
-                $(document).on('click', '.btn_cancel', function(event)
-                {
-                    event.preventDefault();
-
-                    var tbl_row = $(this).closest('tr');
-
-                    var row_id = tbl_row.attr('row_id');
-
-                    //hide save and cacel buttons
-                    tbl_row.find('.btn_save').hide();
-                    tbl_row.find('.btn_cancel').hide();
-
-                    //show edit button
-                    tbl_row.find('.btn_edit').show();
-
-                    //make the whole row editable
-                    tbl_row.find('.row_data')
-                        .attr('edit_type', 'click')
-                        .removeClass('bg-warning')
-                        .css('padding','');
-
-                    tbl_row.find('.row_data').each(function(index, val)
-                    {
-                        $(this).html( $(this).attr('original_entry') );
-                    });
-                });
-                //--->button > cancel > end
-
-
-                //--->save whole row entery > start
-                $(document).on('click', '.btn_save', function(event)
-                {
-                    event.preventDefault();
-                    var tbl_row = $(this).closest('tr');
-
-                    var row_id = tbl_row.attr('row_id');
-
-
-                    //hide save and cacel buttons
-                    tbl_row.find('.btn_save').hide();
-                    tbl_row.find('.btn_cancel').hide();
-
-                    //show edit button
-                    tbl_row.find('.btn_edit').show();
-
-
-                    //make the whole row editable
-                    tbl_row.find('.row_data')
-                        .attr('edit_type', 'click')
-                        .removeClass('bg-warning')
-                        .css('padding','');
-
-                    //--->get row data > start
-                    var arr = {};
-                    tbl_row.find('.row_data').each(function(index, val)
-                    {
-                        var col_name = $(this).attr('col_name');
-                        var col_val  =  $(this).html();
-                        arr[col_name] = col_val;
-                    });
-                    //--->get row data > end
-
-                    //use the "arr"	object for your ajax call
-                    $.extend(arr, {id:row_id});
-
-                    // $.when(update(arr)).done(function () {
-                    //     getHome();
-                    // });
-
-                });
-                //--->save whole row entery > end
-
-
-            };
+}
 
 
 
@@ -232,10 +163,10 @@ function getHome() {
         contentType: 'application/json',
         headers: { 'Authorization': localStorage.auth_token },
         success: function (response) {
-              table(response['data']);
-    }
+            table(response['data']);
+        }
 
-});
+    });
 
 
 }

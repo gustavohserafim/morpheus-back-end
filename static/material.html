@@ -29,9 +29,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/material.html">Materiais<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/measurement.html">Embalagem</a>
-            </li>
         </ul>
     </div>
     <nav class="navbar navbar-light bg-light">
@@ -40,18 +37,18 @@
         </a>
     </nav>
 </nav>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><b> <h1>Materiais</h1> </b> </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading"><b> <h1>Materiais</h1> </b> </div>
+        <div class="panel-body">
 
-  <div class="panel-body">
+            <div class="tbl_user_data">Carregando...</div>
 
-	<div class="tbl_user_data">Carregando...</div>
+        </div>
 
-  </div>
-
+    </div>
 </div>
-
 <button onclick="formHide();" class="btn btn-info" id="client_add_btn" >Adicionar material</button>
 <br>
 <div class="alert alert-success" role="alert" id="created_message">
@@ -63,10 +60,10 @@
         <h1><b>Adicionar material</b></h1><br>
         <fieldset id="material_field"><legend>Dados do material</legend>
 
-                <label for="name">Material:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
-                <label for="ncm">NCM:</label> <input type="text" name="ncm" id="ncm" size="20" maxlength="10" placeholder="Ex: 74040000"><br><br>
-                <label for="description">Descrição:</label> <input type="text" name="description" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
-                <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_material()">
+            <label for="name">Material:</label> <input type="text" name="name" id="name" size="20" maxlength="255" placeholder="Ex: Brass Scrap, etc."><br><br>
+            <label for="ncm">NCM:</label> <input type="text" name="ncm" id="ncm" size="20" maxlength="10" placeholder="Ex: 74040000"><br><br>
+            <label for="description">Descrição:</label> <input type="text" name="description" id="description" size="20" maxlength="255" placeholder="Ex: Metal fino"><br><br>
+            <input type="button" class="btn btn-info" value="Cadastrar" id="material_button" onclick="send_material()">
 
         </fieldset>
         <br>

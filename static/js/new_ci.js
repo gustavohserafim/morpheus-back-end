@@ -62,7 +62,8 @@ function transportSelect(){
 
 function create_ci(){
     event.preventDefault();
-
+    var ci_id;
+    var materials_ids;
 
     if (confirm("Tem certeza que deseja cadastrar a CI?")){
 
@@ -77,20 +78,60 @@ function create_ci(){
                 'transport_id': parseInt($("#transport").val())
             }),
             success: function (response) {
-                var ci_id = response['created_id']
+                ci_id = response['created_id']
             }
         });
 
+        var materials = [];
+        var materials_count = $('input[name^="amount"]').length;
+
+        for (var i = 0; i < materials_count; i++){
+
+            materials.push({
+                'amount': $('input[name="amount['+i+']"]').val(),
+                'unit': $('input[name="unit['+i+']"]').val(),
+                'name': $('input[name="name['+i+']"]').val(),
+                'weight_unit': $('input[name="weight_unit['+i+']"]').val(),
+                'net_weight': $('input[name="net_weight['+i+']"]').val(),
+                'ncm': $('input[name="ncm['+i+']"]').val(),
+                'value': $('input[name="value['+i+']"]').val()
+            })
+        }
+        var item_count;
         var items = [];
 
-        // $('input[name^="amount"]').each(function(index, item){
-        // var value = $('input[id^="txtAnswer"]').val();
-        // var id = $('input[id^="txtAnswer"]').attr('id');
-        // alert('id: ' + id + ' value:' + value);
-// });
+        $.ajax({
+            type: "POST",
+            url: "/api/material",
+            dataType: "json",
+            contentType: 'application/json',
+            headers: { 'Authorization': localStorage.auth_token },
+            data: JSON.stringify(materials),
+            success: function (response) {
+                materials_ids = response['created_ids'];
+                item_count = materials_ids.length;
 
+                for (i = 0; i < item_count; i++) {
+                    items.push({
+                        'commercial_invoice_id': ci_id,
+                        'material_id': materials_ids[i]
+                    });
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/ci_item",
+                    dataType: "json",
+                    contentType: 'application/json',
+                    headers: { 'Authorization': localStorage.auth_token },
+                    data: JSON.stringify(items),
+                    success: alert('CI cadastrada com sucesso!')
+
+                });
+
+            }
+        });
     }
-
 }
 
 $('#addItem').on('click', function(){
@@ -101,7 +142,7 @@ $('#addItem').on('click', function(){
 
     var x = fields.get().reduce((x, element) => {
         var thisx = element.name.match(/amount\[(\d+)\]/);
-        console.log(thisx);
+
     if (thisx) {
         thisx = +thisx[1];
         if (x < thisx) {
@@ -109,7 +150,7 @@ $('#addItem').on('click', function(){
         }
     }
     return x;
-    }, 0);
+}, 0);
 
     ++x;
 
@@ -120,6 +161,7 @@ $('#addItem').on('click', function(){
     form.append('<label for="net_weight['+x+']"><input type="number" class="form-control" name="net_weight['+x+']" step="any" min="1" placeholder="25.0" required="required"></label>');
     form.append('<label for="ncm['+x+']"><input type="number" class="form-control" name="ncm['+x+']" placeholder="7281" minlength="4" maxlength="8" required="required"></label>');
     form.append('<label for="value['+x+']"><input type="number" class="form-control" name="value['+x+']" placeholder="4.53" min="1" required="required"></label><br>');
+
 
 });
 
