@@ -5,7 +5,7 @@ class TransportModel:
 
     @staticmethod
     def all():
-        return DB.selectAll(['id', 'nome', 'city', 'type'], 'transport')
+        return DB().selectAll(['id', 'name', 'city', 'type'], 'transport')
 
     @staticmethod
     def create(data):

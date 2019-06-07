@@ -6,7 +6,7 @@ class TransportController:
 
     @staticmethod
     def all():
-        return jsonify(TransportModel.all())
+        return jsonify({'data': TransportModel.all()})
 
     @staticmethod
     def create(data):
@@ -16,10 +16,10 @@ class TransportController:
             return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
         return jsonify({'result': 'ok', 'code': 200})
     @staticmethod
-    def get(company_id):
+    def get(transport_id):
         return jsonify({'result': 'ok', 'data': TransportModel.get(transport_id)}), 200
 
     @staticmethod
-    def remove(company_id):
+    def remove(transport_id):
         TransportModel.remove(transport_id)
         return jsonify({'result': 'ok'}), 200
