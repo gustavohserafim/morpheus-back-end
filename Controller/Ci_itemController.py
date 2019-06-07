@@ -2,7 +2,7 @@ from flask import jsonify
 from Model.Ci_itemModel import *
 
 
-class CiController:
+class Ci_itemController:
 
     @staticmethod
     def all():
