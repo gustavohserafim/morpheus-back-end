@@ -28,8 +28,8 @@ class CommercialInvoiceController:
     def get(ci_id):
 
         ci = CommercialInvoiceModel.get(ci_id)[0]
+        ci['transport'] = CommercialInvoiceModel.getTransport(ci_id)
         ci['materials'] = CommercialInvoiceModel.getMaterials(ci_id)
-        print(ci)
 
         return jsonify({'data': ci}), 200
 

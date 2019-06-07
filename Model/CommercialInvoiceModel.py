@@ -32,5 +32,10 @@ class CommercialInvoiceModel:
         return DB().exec(sql, items)
 
     @staticmethod
+    def getTransport(ci_id):
+        transport_id = DB().selectFV("SELECT transport_id FROM commercial_invoice WHERE id = {} AND removed = 0;".format(ci_id))
+        return DB().runFetchRow("SELECT name, city, type FROM transport WHERE id = {} AND removed = 0;".format(transport_id['transport_id']))
+
+    @staticmethod
     def remove(ci_id):
         return DB().remove(ci_id, 'id')

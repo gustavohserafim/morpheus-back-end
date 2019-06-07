@@ -75,7 +75,7 @@ class DB:
         cur.execute(sql)
         data = cur.fetchall()
 
-        return data
+        return data[0]
 
     def getPasswordByEmail(self, email):
         cur = self._cur
