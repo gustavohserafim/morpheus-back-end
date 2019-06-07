@@ -123,5 +123,23 @@ class DB:
         data = cur.fetchone()
         return data
 
+    def selectFC(self, sql):
+        cur = self._cur
+
+        cur.execute(sql)
+        result = cur.fetchall()
+
+        data = []
+        for i in result:
+            data.append(i['material_id'])
+        return data
+
+    def exec(self, sql, params):
+        cur = self._cur
+
+        cur.execute(sql, params)
+
+        return cur.fetchall()
+
     def __del__(self):
         self._conn.close()

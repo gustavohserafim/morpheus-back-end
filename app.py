@@ -91,6 +91,12 @@ def create_ci():
     return CommercialInvoiceController.create(request.get_json())
 
 
+@app.route('/api/ci/<int:ci_id>', methods=['GET'])
+@jwt_required
+def ci_get(ci_id):
+    return CommercialInvoiceController.get(ci_id)
+
+
 @app.route('/api/address', methods=['GET'])
 @jwt_required
 def address_all():

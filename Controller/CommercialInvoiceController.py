@@ -25,8 +25,13 @@ class CommercialInvoiceController:
         return jsonify({'result': 'ok', 'created_id': result['id']}), 200
 
     @staticmethod
-    def get(id):
-        return jsonify({'result': 'ok', 'data': CommercialInvoiceModel.get(id)}), 200
+    def get(ci_id):
+
+        ci = CommercialInvoiceModel.get(ci_id)[0]
+        ci['materials'] = CommercialInvoiceModel.getMaterials(ci_id)
+        print(ci)
+
+        return jsonify({'data': ci}), 200
 
     @staticmethod
     def remove(id):
