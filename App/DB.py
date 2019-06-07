@@ -116,5 +116,12 @@ class DB:
         data = cur.fetchall()
         return data
 
+    def selectFV(self, sql):
+        cur = self._cur
+
+        cur.execute(sql)
+        data = cur.fetchone()
+        return data
+
     def __del__(self):
         self._conn.close()
