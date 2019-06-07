@@ -3,7 +3,11 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-#client_add_btn {
+#client_add_btn{
     position: relative;
     left: 15px;
+}
+
+body{
+    color: #001B36;
 }
