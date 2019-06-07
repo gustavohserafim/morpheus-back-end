@@ -5,7 +5,7 @@ class CommercialInvoiceModel:
 
     @staticmethod
     def getHome():
-        return DB().selectFA("SELECT commercial_invoice.id, created_at, name as client_name  FROM commercial_invoice, client WHERE client_id = client.id;")
+        return DB().selectFA("SELECT commercial_invoice.id, created_at, name as client_name  FROM commercial_invoice, client WHERE client_id = client.id AND commercial_invoice.removed = 0;")
     
     @staticmethod
     def all():
