@@ -109,5 +109,12 @@ class DB:
             print(e)
             return False
 
+    def selectFA(self, sql):
+        cur = self._cur
+
+        cur.execute(sql)
+        data = cur.fetchall()
+        return data
+
     def __del__(self):
         self._conn.close()
