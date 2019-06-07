@@ -21,7 +21,7 @@ class CommercialInvoiceController:
         result = CommercialInvoiceModel.create(data)
 
         if result is False:
-            return jsonify({'error': True, 'message': 'failed to insert', 'code': 400})
+            return jsonify({'error': True, 'message': 'failed to insert'}), 400
         return jsonify({'result': 'ok', 'code': 200})
 
     @staticmethod

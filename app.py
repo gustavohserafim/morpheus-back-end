@@ -87,8 +87,8 @@ def ci_all():
 
 @app.route('/api/ci', methods=['POST'])
 @jwt_required
-def ci_create():
-    return CiController.create(request.get_json())
+def create_ci():
+    return CommercialInvoiceController.create(request.get_json())
 
 
 @app.route('/api/address', methods=['GET'])

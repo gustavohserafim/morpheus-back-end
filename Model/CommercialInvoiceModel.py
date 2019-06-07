@@ -16,9 +16,9 @@ class CommercialInvoiceModel:
         return DB().insert(data, 'commercial_invoice')
 
     @staticmethod
-    def get(CommercialInvoice_id):
-        return DB().SelectById(CommercialInvoice_id, ['id', 'client_id', 'transport_id'], 'commercial_invoice')
+    def get(ci_id):
+        return DB().SelectById(ci_id, ['id', 'client_id', 'transport_id'], 'commercial_invoice')
 
     @staticmethod
-    def remove(CommercialInvoice_id):
-        return DB().remove(CommercialInvoice_id, 'id')
+    def remove(ci_id):
+        return DB().remove(ci_id, 'id')
