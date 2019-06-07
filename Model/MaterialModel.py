@@ -13,7 +13,7 @@ class MaterialModel:
         for i in data:
             if DB().insert(i, 'material') is False:
                 return False
-            created_ids.append(DB().selectFV("SELECT MAX(id) as id FROM material;"))
+            created_ids.append(DB().selectFV("SELECT MAX(id) as id FROM material;")['id'])
 
         return created_ids
 
